@@ -1,69 +1,90 @@
 <!DOCTYPE html>
 <html>
-<head>
-    <title>8051 单片机设置定时器 // 黄金之心号|博客</title>
+  <head>
+    
+    
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'U-12345678-0', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
 
-        <meta charset="utf-8">
-    <meta http-equiv="content-type" content="text/html; charset=utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
-    <meta name="description" content="">
-    <meta name="keywords" content="">
-    <meta name="author" content="">
-        <meta property="og:title" content="8051 单片机设置定时器" />
-    <meta property="og:description" content="" />
-    <meta property="og:type" content="website" />
-    <meta property="og:locale" content="en_US" />
-    <meta property="og:url" content="https://mengsheng.me/post/8051-%E5%8D%95%E7%89%87%E6%9C%BA%E8%AE%BE%E7%BD%AE%E5%AE%9A%E6%97%B6%E5%99%A8/" />
+    
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>
+      
+  8051 单片机设置定时器 &ndash; 黄金之心号|博客
+
+    </title>
+    
+    
+    <meta name="description" property="og:description" content="定时器有计数脉冲和定时两种模式，这篇文章写的是使用定时器0的16位定时器编写 1s 定时的程序过程。 定时器是如何定时的 首先单片机是根据晶振发出的脉|单片机,硬件,编程">
     
 
-    <link href="" rel="alternate" type="application/rss+xml" title="黄金之心号|博客" />
-    <link rel="shortcut icon" href="/favicon.png">
-
-    <link href="https://mengsheng.me/webfonts/ptserif/main.css" rel='stylesheet' type='text/css'>
-    <link href="https://mengsheng.me/webfonts/source-code-pro/main.css" rel="stylesheet" type="text/css">
-
-    <link rel="stylesheet" href="https://mengsheng.me/css/style.css">
-
-    <meta name="generator" content="Hugo 0.55.6" />
-</head>
+    <meta name="apple-mobile-web-app-title" content="黄金之心号|博客">
+    
+    
+    
+    
 
 
-<body>
-<div id="container">
-    <header id="header">
-    <div id="header-outer" class="outer">
-        <div id="header-inner" class="inner">
-            <a id="main-nav-toggle" class="nav-icon" href="javascript:;"></a>
-            <a id="logo" class="logo-text" href="https://mengsheng.me/">黄金之心号|博客</a>
-            <nav id="main-nav">
-                
-            </nav>
-            <nav id="sub-nav">
-                <div id="search-form-wrap">
-                </div>
-            </nav>
-        </div>
+    <link rel="stylesheet" href="/assets/syntax.css">
+    <link rel="stylesheet" href="/assets/primer-build.css">
+    <link rel="stylesheet" href="/assets/style.css">
+  </head>
+
+
+  <body class="bg-gray">
+    <div id="holy" class="container-lg bg-white h-100">
+
+      <div id="header" class="px-1 bg-white">
+        <nav class="UnderlineNav UnderlineNav--right px-2">
+  <a class="UnderlineNav-actions muted-link h2" href="https://mengsheng.me/">
+    黄金之心号|博客
+  </a>
+
+  
+  
+</nav>
+
+      </div>
+
+      <div role="main" id="main" class="holy-main markdown-body px-4 bg-white">
+        
+
+<div class="Subhead">
+  <div class="Subhead-heading">
+    <div class="h1 mt-3 mb-1">8051 单片机设置定时器</div>
+  </div>
+  <div class="Subhead-description">
+    
+
+
+
+
+
+
+    
+    <div class="float-md-right">
+      <span title="Lastmod: 2019-05-21. Published at: 0001-01-01.">
+        
+          Lastmod: 2019-05-21
+        
+      </span>
     </div>
-</header>
-
-    <section id="main" class="outer">
-        <article class="article article-type-post" itemscope itemprop="blogPost">
-    <div class="article-inner">
-        
-        <header class="article-header">
-            <h1 class="article-title" itemprop="name">8051 单片机设置定时器</h1>
-        </header>
-        
-        <div class="article-meta">
-            <a href="/post/8051-%E5%8D%95%E7%89%87%E6%9C%BA%E8%AE%BE%E7%BD%AE%E5%AE%9A%E6%97%B6%E5%99%A8/" class="article-date">
-                <time datetime='0001-01-01T00:00:00.000&#43;00:00' itemprop="datePublished">0001-01-01</time>
-            </a>
-            
-            
-            
-        </div>
-        <div class="article-entry" itemprop="articleBody">
-            
+    
+  </div>
+</div>
+<article>
+  
+  <section class="pb-6 mb-3 border-bottom">
+    
 
 <p>定时器有计数脉冲和定时两种模式，这篇文章写的是使用定时器0的16位定时器编写 1s 定时的程序过程。</p>
 
@@ -75,44 +96,51 @@
 
 <p>我们了解到定时 1us ，需要计数 12 个脉冲(12M 晶振的情况下)。 那么定时 1ms ，需要计数  12000 个脉冲。
 首先要开启总中断使能和定时器0使能</p>
+<div class="highlight"><pre class="chroma"><code class="language-c" data-lang="c"><span class="cp">#include</span> <span class="cpf">&#34;stc12c5a60s2.h&#34;</span><span class="cp">
+</span><span class="cp">#define FOSC 12000000L
+</span><span class="cp"></span><span class="n">sbit</span> <span class="n">P2_0</span> <span class="o">=</span> <span class="n">P2</span><span class="o">^</span><span class="mi">0</span><span class="p">;</span>
 
-<pre><code class="language-c">#include &quot;stc12c5a60s2.h&quot;
-#define FOSC 12000000L
-sbit P2_0 = P2^0;
+<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span>
+<span class="p">{</span>
+    <span class="c1">// 开启总中断和定时器0中断
+</span><span class="c1"></span>    <span class="n">EA</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+    <span class="n">ET0</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+    <span class="c1">// 设置定时器0工作在16位定时器模式
+</span><span class="c1"></span>    <span class="n">TMOD</span> <span class="o">=</span> <span class="mh">0x01</span><span class="p">;</span>
+    <span class="c1">// 1ms 定时   
+</span><span class="c1"></span>    <span class="n">TH0</span> <span class="o">=</span> <span class="p">(</span><span class="mi">65536</span> <span class="o">-</span> <span class="n">FOSC</span><span class="o">/</span><span class="mi">12</span><span class="o">/</span><span class="mi">1000</span><span class="p">)</span><span class="o">/</span><span class="mi">256</span><span class="p">;</span>
+    <span class="n">TL0</span> <span class="o">=</span> <span class="p">(</span><span class="mi">65536</span> <span class="o">-</span> <span class="n">FOSC</span><span class="o">/</span><span class="mi">12</span><span class="o">/</span><span class="mi">1000</span><span class="p">)</span><span class="o">%</span><span class="mi">256</span><span class="p">;</span>
+    <span class="c1">// 定时器计时开始
+</span><span class="c1"></span>    <span class="n">TR0</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+    <span class="k">while</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+<span class="p">}</span>   
 
-int main()
-{
-    // 开启总中断和定时器0中断
-    EA = 1;
-    ET0 = 1;
-    // 设置定时器0工作在16位定时器模式
-    TMOD = 0x01;
-    // 1ms 定时   
-    TH0 = (65536 - FOSC/12/1000)/256;
-    TL0 = (65536 - FOSC/12/1000)%256;
-    // 定时器计时开始
-    TR0 = 1;
-    while(1);
-}   
+<span class="kt">void</span> <span class="nf">Timer0_Rountine</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span> <span class="n">interrupt</span> <span class="mi">1</span>
+<span class="p">{</span>
+    <span class="c1">// 重装载定时器
+</span><span class="c1"></span>    <span class="n">TH0</span> <span class="o">=</span> <span class="p">(</span><span class="mi">65536</span> <span class="o">-</span> <span class="n">FOSC</span><span class="o">/</span><span class="mi">12</span><span class="o">/</span><span class="mi">1000</span><span class="p">)</span><span class="o">/</span><span class="mi">256</span><span class="p">;</span>
+    <span class="n">TL0</span> <span class="o">=</span> <span class="p">(</span><span class="mi">65536</span> <span class="o">-</span> <span class="n">FOSC</span><span class="o">/</span><span class="mi">12</span><span class="o">/</span><span class="mi">1000</span><span class="p">)</span><span class="o">%</span><span class="mi">256</span><span class="p">;</span>
+    <span class="c1">// 你要执行的任务，每1ms 执行一次
+</span><span class="c1"></span>    <span class="c1">// 任务代码
+</span><span class="c1"></span><span class="p">}</span></code></pre></div>
+  </section>
 
-void Timer0_Rountine(void) interrupt 1
-{
-    // 重装载定时器
-    TH0 = (65536 - FOSC/12/1000)/256;
-    TL0 = (65536 - FOSC/12/1000)%256;
-    // 你要执行的任务，每1ms 执行一次
-    // 任务代码
-}
+  <section>
+    
+      
+    
+  </section>
+</article>
 
-</code></pre>
+      </div>
 
-        </div>
-
-        
-        
-        <div class="article-toc" >
-            <h3>Contents</h3>
-            <nav id="TableOfContents">
+      <div id="side" class="pr-1 bg-white">
+        <aside class="pr-3">
+          
+  
+    <div id="toc" class="Box Box--blue mb-3">
+      <b>8051 单片机设置定时器</b>
+      <nav id="TableOfContents">
 <ul>
 <li>
 <ul>
@@ -127,61 +155,37 @@ void Timer0_Rountine(void) interrupt 1
 </ul></li>
 </ul>
 </nav>
-        </div>
-        
-        
-
-        
-
-
-        
     </div>
-    <nav id="article-nav">
-    
-    <a href="/post/220v%E4%BA%A4%E6%B5%81%E8%BD%AC12v%E7%9B%B4%E6%B5%81-%E7%BA%BF%E6%80%A7%E7%A8%B3%E5%8E%8B%E7%94%B5%E6%BA%90/" id="article-nav-newer" class="article-nav-link-wrap">
-        <div class="article-nav-title"><span>&lt;</span>&nbsp;
-            220v交流转12v直流 - 线性稳压电源
-        </div>
-    </a>
-    
-    
-    <a href="/post/python-%E5%A4%9A%E7%BA%BF%E7%A8%8B/" id="article-nav-older" class="article-nav-link-wrap">
-        <div class="article-nav-title">python 多线程&nbsp;<span>&gt;</span></div>
-    </a>
-    
-</nav>
+  
 
-</article>
-
-        
-    </section>
-    <footer id="footer">
-    <div class="outer">
-        <div id="footer-info" class="inner">
-            &copy; 2019 黄金之心号|博客
-            <br />
-            Powered by <a href="https://gohugo.io" target="_blank">Hugo</a> with theme <a href="https://github.com/carsonip/hugo-theme-minos" target="_blank">Minos</a>
-        </div>
+  
+    <div>
+      
     </div>
+  
+
+        </aside>
+      </div>
+
+      <div id="footer" class="pt-2 pb-3 bg-white text-center">
+        
+
+  <span class="text-small text-gray">
     
 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/styles/tomorrow-night.min.css" integrity="sha256-2wL88NKUqvJi/ExflDzkzUumjUM73mcK2gBvBBeLvTk=" crossorigin="anonymous" />
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/highlight.min.js" integrity="sha256-KbfTjB0WZ8vvXngdpJGY3Yp3xKk+tttbqClO11anCIU=" crossorigin="anonymous"></script>
-    <script>hljs.initHighlightingOnLoad();</script>
+    Powered by the
+    <a href="https://github.com/qqhann/hugo-primer" class="link-gray-dark">Hugo-Primer</a> theme for
+    <a href="https://gohugo.io" class="link-gray-dark">Hugo</a>.
+  </span>
+
+
+      </div>
+    </div>
+
 
     
-    <script>
-        document.getElementById('main-nav-toggle').addEventListener('click', function () {
-            var header = document.getElementById('header');
-            if (header.classList.contains('mobile-on')) {
-                header.classList.remove('mobile-on');
-            } else {
-                header.classList.add('mobile-on');
-            }
-        });
-    </script>
-</footer>
-
-</div>
-</body>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({ tex2jax: { inlineMath: [['$','$'], ['\\(','\\)']] } });</script>
+  </body>
 </html>

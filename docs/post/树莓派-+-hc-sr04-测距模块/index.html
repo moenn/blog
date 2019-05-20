@@ -1,69 +1,90 @@
 <!DOCTYPE html>
 <html>
-<head>
-    <title>树莓派 &#43; HC SR04 测距模块 // 黄金之心号|博客</title>
+  <head>
+    
+    
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'U-12345678-0', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
 
-        <meta charset="utf-8">
-    <meta http-equiv="content-type" content="text/html; charset=utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
-    <meta name="description" content="">
-    <meta name="keywords" content="">
-    <meta name="author" content="">
-        <meta property="og:title" content="树莓派 &#43; HC SR04 测距模块" />
-    <meta property="og:description" content="" />
-    <meta property="og:type" content="website" />
-    <meta property="og:locale" content="en_US" />
-    <meta property="og:url" content="https://mengsheng.me/post/%E6%A0%91%E8%8E%93%E6%B4%BE-&#43;-hc-sr04-%E6%B5%8B%E8%B7%9D%E6%A8%A1%E5%9D%97/" />
+    
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>
+      
+  树莓派 &#43; HC SR04 测距模块 &ndash; 黄金之心号|博客
+
+    </title>
+    
+    
+    <meta name="description" property="og:description" content="超声波测距模块 HC-SR04 非常易于使用，这篇文章就介绍 HC-SR04 的测距原理、树莓派如何与 HC-SR04 接线，以及使用 python 程序控制测距的方法。 HC-SR04 测距过程 下图说明了超声波的测距|单片机,硬件,编程">
     
 
-    <link href="" rel="alternate" type="application/rss+xml" title="黄金之心号|博客" />
-    <link rel="shortcut icon" href="/favicon.png">
-
-    <link href="https://mengsheng.me/webfonts/ptserif/main.css" rel='stylesheet' type='text/css'>
-    <link href="https://mengsheng.me/webfonts/source-code-pro/main.css" rel="stylesheet" type="text/css">
-
-    <link rel="stylesheet" href="https://mengsheng.me/css/style.css">
-
-    <meta name="generator" content="Hugo 0.55.6" />
-</head>
+    <meta name="apple-mobile-web-app-title" content="黄金之心号|博客">
+    
+    
+    
+    
 
 
-<body>
-<div id="container">
-    <header id="header">
-    <div id="header-outer" class="outer">
-        <div id="header-inner" class="inner">
-            <a id="main-nav-toggle" class="nav-icon" href="javascript:;"></a>
-            <a id="logo" class="logo-text" href="https://mengsheng.me/">黄金之心号|博客</a>
-            <nav id="main-nav">
-                
-            </nav>
-            <nav id="sub-nav">
-                <div id="search-form-wrap">
-                </div>
-            </nav>
-        </div>
+    <link rel="stylesheet" href="/assets/syntax.css">
+    <link rel="stylesheet" href="/assets/primer-build.css">
+    <link rel="stylesheet" href="/assets/style.css">
+  </head>
+
+
+  <body class="bg-gray">
+    <div id="holy" class="container-lg bg-white h-100">
+
+      <div id="header" class="px-1 bg-white">
+        <nav class="UnderlineNav UnderlineNav--right px-2">
+  <a class="UnderlineNav-actions muted-link h2" href="https://mengsheng.me/">
+    黄金之心号|博客
+  </a>
+
+  
+  
+</nav>
+
+      </div>
+
+      <div role="main" id="main" class="holy-main markdown-body px-4 bg-white">
+        
+
+<div class="Subhead">
+  <div class="Subhead-heading">
+    <div class="h1 mt-3 mb-1">树莓派 &#43; HC SR04 测距模块</div>
+  </div>
+  <div class="Subhead-description">
+    
+
+
+
+
+
+
+    
+    <div class="float-md-right">
+      <span title="Lastmod: 2019-05-21. Published at: 2018-12-03.">
+        
+          Lastmod: 2019-05-21
+        
+      </span>
     </div>
-</header>
-
-    <section id="main" class="outer">
-        <article class="article article-type-post" itemscope itemprop="blogPost">
-    <div class="article-inner">
-        
-        <header class="article-header">
-            <h1 class="article-title" itemprop="name">树莓派 &#43; HC SR04 测距模块</h1>
-        </header>
-        
-        <div class="article-meta">
-            <a href="/post/%E6%A0%91%E8%8E%93%E6%B4%BE-&#43;-hc-sr04-%E6%B5%8B%E8%B7%9D%E6%A8%A1%E5%9D%97/" class="article-date">
-                <time datetime='2018-12-03T21:26:43.000&#43;08:00' itemprop="datePublished">2018-12-03</time>
-            </a>
-            
-            
-            
-        </div>
-        <div class="article-entry" itemprop="articleBody">
-            
+    
+  </div>
+</div>
+<article>
+  
+  <section class="pb-6 mb-3 border-bottom">
+    
 
 <p>超声波测距模块 HC-SR04 非常易于使用，这篇文章就介绍 HC-SR04 的测距原理、树莓派如何与 HC-SR04 接线，以及使用 python 程序控制测距的方法。</p>
 
@@ -102,62 +123,58 @@ HC-SR04 模块包含了超声波发射器、超声波接收器和控制电路，
 <h3 id="python-程序控制测距">python 程序控制测距</h3>
 
 <p>如果你理解了 HC-SR04 的工作过程，那么下面包含注释的程序对你应该很简单，就不一一解释了。</p>
-
-<pre><code class="language-python">#导入 GPIO库
-import RPi.GPIO as GPIO
-import time
+<div class="highlight"><pre class="chroma"><code class="language-python" data-lang="python"><span class="c1">#导入 GPIO库</span>
+<span class="kn">import</span> <span class="nn">RPi.GPIO</span> <span class="kn">as</span> <span class="nn">GPIO</span>
+<span class="kn">import</span> <span class="nn">time</span>
  
-#设置 GPIO 模式为 BCM
-GPIO.setmode(GPIO.BCM)
+<span class="c1">#设置 GPIO 模式为 BCM</span>
+<span class="n">GPIO</span><span class="o">.</span><span class="n">setmode</span><span class="p">(</span><span class="n">GPIO</span><span class="o">.</span><span class="n">BCM</span><span class="p">)</span>
  
-#定义 GPIO 引脚
-GPIO_TRIGGER = 23
-GPIO_ECHO = 24
+<span class="c1">#定义 GPIO 引脚</span>
+<span class="n">GPIO_TRIGGER</span> <span class="o">=</span> <span class="mi">23</span>
+<span class="n">GPIO_ECHO</span> <span class="o">=</span> <span class="mi">24</span>
  
-#设置 GPIO 的工作方式 (IN / OUT)
-GPIO.setup(GPIO_TRIGGER, GPIO.OUT)
-GPIO.setup(GPIO_ECHO, GPIO.IN)
+<span class="c1">#设置 GPIO 的工作方式 (IN / OUT)</span>
+<span class="n">GPIO</span><span class="o">.</span><span class="n">setup</span><span class="p">(</span><span class="n">GPIO_TRIGGER</span><span class="p">,</span> <span class="n">GPIO</span><span class="o">.</span><span class="n">OUT</span><span class="p">)</span>
+<span class="n">GPIO</span><span class="o">.</span><span class="n">setup</span><span class="p">(</span><span class="n">GPIO_ECHO</span><span class="p">,</span> <span class="n">GPIO</span><span class="o">.</span><span class="n">IN</span><span class="p">)</span>
  
-def distance():
-    # 发送高电平信号到 Trig 引脚
-    GPIO.output(GPIO_TRIGGER, True)
+<span class="k">def</span> <span class="nf">distance</span><span class="p">():</span>
+    <span class="c1"># 发送高电平信号到 Trig 引脚</span>
+    <span class="n">GPIO</span><span class="o">.</span><span class="n">output</span><span class="p">(</span><span class="n">GPIO_TRIGGER</span><span class="p">,</span> <span class="bp">True</span><span class="p">)</span>
  
-    # 持续 10 us 
-    time.sleep(0.00001)
-    GPIO.output(GPIO_TRIGGER, False)
+    <span class="c1"># 持续 10 us </span>
+    <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">0.00001</span><span class="p">)</span>
+    <span class="n">GPIO</span><span class="o">.</span><span class="n">output</span><span class="p">(</span><span class="n">GPIO_TRIGGER</span><span class="p">,</span> <span class="bp">False</span><span class="p">)</span>
  
-    start_time = time.time()
-    stop_time = time.time()
+    <span class="n">start_time</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+    <span class="n">stop_time</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
  
-    # 记录发送超声波的时刻1
-    while GPIO.input(GPIO_ECHO) == 0:
-        start_time = time.time()
+    <span class="c1"># 记录发送超声波的时刻1</span>
+    <span class="k">while</span> <span class="n">GPIO</span><span class="o">.</span><span class="nb">input</span><span class="p">(</span><span class="n">GPIO_ECHO</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">start_time</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
  
-    # 记录接收到返回超声波的时刻2
-    while GPIO.input(GPIO_ECHO) == 1:
-        stop_time = time.time()
+    <span class="c1"># 记录接收到返回超声波的时刻2</span>
+    <span class="k">while</span> <span class="n">GPIO</span><span class="o">.</span><span class="nb">input</span><span class="p">(</span><span class="n">GPIO_ECHO</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="n">stop_time</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
  
-    # 计算超声波的往返时间 = 时刻2 - 时刻1
-    time_elapsed = stop_time - start_time
-    # 声波的速度为 343m/s， 转化为 34300cm/s。
-    distance = (time_elapsed * 34300) / 2
+    <span class="c1"># 计算超声波的往返时间 = 时刻2 - 时刻1</span>
+    <span class="n">time_elapsed</span> <span class="o">=</span> <span class="n">stop_time</span> <span class="o">-</span> <span class="n">start_time</span>
+    <span class="c1"># 声波的速度为 343m/s， 转化为 34300cm/s。</span>
+    <span class="n">distance</span> <span class="o">=</span> <span class="p">(</span><span class="n">time_elapsed</span> <span class="o">*</span> <span class="mi">34300</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span>
  
-    return distance
+    <span class="k">return</span> <span class="n">distance</span>
  
-if __name__ == '__main__':
-    try:
-        while True:
-            dist = distance()
-            print(&quot;Measured Distance = {:.2f} cm&quot;.format(dist))
-            time.sleep(1)
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="k">while</span> <span class="bp">True</span><span class="p">:</span>
+            <span class="n">dist</span> <span class="o">=</span> <span class="n">distance</span><span class="p">()</span>
+            <span class="k">print</span><span class="p">(</span><span class="s2">&#34;Measured Distance = {:.2f} cm&#34;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">dist</span><span class="p">))</span>
+            <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
  
-        # Reset by pressing CTRL + C
-    except KeyboardInterrupt:
-        print(&quot;Measurement stopped by User&quot;)
-        GPIO.cleanup()
-
-</code></pre>
-
+        <span class="c1"># Reset by pressing CTRL + C</span>
+    <span class="k">except</span> <span class="ne">KeyboardInterrupt</span><span class="p">:</span>
+        <span class="k">print</span><span class="p">(</span><span class="s2">&#34;Measurement stopped by User&#34;</span><span class="p">)</span>
+        <span class="n">GPIO</span><span class="o">.</span><span class="n">cleanup</span><span class="p">()</span></code></pre></div>
 <p>运行结果:</p>
 
 <p><img src="https://i.loli.net/2018/12/04/5c05597c85566.png" alt="Snipaste_2018-12-04_00-24-20.png" /></p>
@@ -168,13 +185,24 @@ if __name__ == '__main__':
 
 <p><a href="https://tutorials-raspberrypi.com/raspberry-pi-ultrasonic-sensor-hc-sr04/">Using a Raspberry Pi distance sensor (ultrasonic sensor HC-SR04)</a></p>
 
-        </div>
+  </section>
 
-        
-        
-        <div class="article-toc" >
-            <h3>Contents</h3>
-            <nav id="TableOfContents">
+  <section>
+    
+      
+    
+  </section>
+</article>
+
+      </div>
+
+      <div id="side" class="pr-1 bg-white">
+        <aside class="pr-3">
+          
+  
+    <div id="toc" class="Box Box--blue mb-3">
+      <b>树莓派 &#43; HC SR04 测距模块</b>
+      <nav id="TableOfContents">
 <ul>
 <li>
 <ul>
@@ -188,61 +216,37 @@ if __name__ == '__main__':
 </ul></li>
 </ul>
 </nav>
-        </div>
-        
-        
-
-        
-
-
-        
     </div>
-    <nav id="article-nav">
-    
-    <a href="/post/centos-%E5%AE%89%E8%A3%85-python3/" id="article-nav-newer" class="article-nav-link-wrap">
-        <div class="article-nav-title"><span>&lt;</span>&nbsp;
-            centos 安装 python3
-        </div>
-    </a>
-    
-    
-    <a href="/post/%E6%A0%91%E8%8E%93%E6%B4%BE%E5%85%A5%E9%97%A8%E4%B8%89%E8%87%AA%E5%8A%A8%E8%BF%9E%E6%8E%A5-wifi/" id="article-nav-older" class="article-nav-link-wrap">
-        <div class="article-nav-title">树莓派入门(三)自动连接 wifi&nbsp;<span>&gt;</span></div>
-    </a>
-    
-</nav>
+  
 
-</article>
-
-        
-    </section>
-    <footer id="footer">
-    <div class="outer">
-        <div id="footer-info" class="inner">
-            &copy; 2019 黄金之心号|博客
-            <br />
-            Powered by <a href="https://gohugo.io" target="_blank">Hugo</a> with theme <a href="https://github.com/carsonip/hugo-theme-minos" target="_blank">Minos</a>
-        </div>
+  
+    <div>
+      
     </div>
+  
+
+        </aside>
+      </div>
+
+      <div id="footer" class="pt-2 pb-3 bg-white text-center">
+        
+
+  <span class="text-small text-gray">
     
 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/styles/tomorrow-night.min.css" integrity="sha256-2wL88NKUqvJi/ExflDzkzUumjUM73mcK2gBvBBeLvTk=" crossorigin="anonymous" />
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/highlight.min.js" integrity="sha256-KbfTjB0WZ8vvXngdpJGY3Yp3xKk+tttbqClO11anCIU=" crossorigin="anonymous"></script>
-    <script>hljs.initHighlightingOnLoad();</script>
+    Powered by the
+    <a href="https://github.com/qqhann/hugo-primer" class="link-gray-dark">Hugo-Primer</a> theme for
+    <a href="https://gohugo.io" class="link-gray-dark">Hugo</a>.
+  </span>
+
+
+      </div>
+    </div>
+
 
     
-    <script>
-        document.getElementById('main-nav-toggle').addEventListener('click', function () {
-            var header = document.getElementById('header');
-            if (header.classList.contains('mobile-on')) {
-                header.classList.remove('mobile-on');
-            } else {
-                header.classList.add('mobile-on');
-            }
-        });
-    </script>
-</footer>
-
-</div>
-</body>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({ tex2jax: { inlineMath: [['$','$'], ['\\(','\\)']] } });</script>
+  </body>
 </html>
