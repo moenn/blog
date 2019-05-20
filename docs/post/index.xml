@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Posts on 黄金之心号|博客</title>
-    <link>http://example.org/post/</link>
+    <link>https://moenn.github.io/blog/post/</link>
     <description>Recent content in Posts on 黄金之心号|博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Tue, 21 May 2019 01:41:09 +0800</lastBuildDate>
     
-	<atom:link href="http://example.org/post/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://moenn.github.io/blog/post/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>First</title>
-      <link>http://example.org/post/first/</link>
+      <link>https://moenn.github.io/blog/post/first/</link>
       <pubDate>Tue, 21 May 2019 01:41:09 +0800</pubDate>
       
-      <guid>http://example.org/post/first/</guid>
+      <guid>https://moenn.github.io/blog/post/first/</guid>
       <description>hello hugo</description>
     </item>
     
