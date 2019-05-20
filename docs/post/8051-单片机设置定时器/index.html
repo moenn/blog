@@ -1,120 +1,69 @@
 <!DOCTYPE html>
-<html lang="zh-cn">
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    
-    <title>黄金之心号|博客  | 8051 单片机设置定时器</title>
-    <meta name="HandheldFriendly" content="True">
-    <meta name="MobileOptimized" content="320">
+<html>
+<head>
+    <title>8051 单片机设置定时器 // 黄金之心号|博客</title>
 
-    <meta name="viewport" content="width=device-width,minimum-scale=1">
+        <meta charset="utf-8">
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <meta name="author" content="">
+        <meta property="og:title" content="8051 单片机设置定时器" />
+    <meta property="og:description" content="" />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:url" content="https://mengsheng.me/post/8051-%E5%8D%95%E7%89%87%E6%9C%BA%E8%AE%BE%E7%BD%AE%E5%AE%9A%E6%97%B6%E5%99%A8/" />
+    
+
+    <link href="" rel="alternate" type="application/rss+xml" title="黄金之心号|博客" />
+    <link rel="shortcut icon" href="/favicon.png">
+
+    <link href="https://mengsheng.me/webfonts/ptserif/main.css" rel='stylesheet' type='text/css'>
+    <link href="https://mengsheng.me/webfonts/source-code-pro/main.css" rel="stylesheet" type="text/css">
+
+    <link rel="stylesheet" href="https://mengsheng.me/css/style.css">
+
     <meta name="generator" content="Hugo 0.55.6" />
-    
-    
-      <META NAME="ROBOTS" CONTENT="NOINDEX, NOFOLLOW">
-    
-
-    
-    
-      <link href="/blog/dist/css/app.d98f2eb6bcd1eaedb7edf166bd16af26.css" rel="stylesheet">
-    
-
-    
-
-    
-      
-    
-
-    
-
-    <meta property="og:title" content="8051 单片机设置定时器" />
-<meta property="og:description" content=" 定时器有计数脉冲和定时两种模式，这篇文章写的是使用定时器0的16位定时器编写 1s 定时的程序过程。
-定时器是如何定时的 首先单片机是根据晶振发出的脉冲进行工作的，比如一个 stc 单片机使用了 12MHz 的外部晶振，这个晶振每秒会发出 12M = 12000000 个脉冲供单片机运行使用。反过来算一下，一个脉冲持续多少时间呢？ 1&frasl;12000000 s= 1&frasl;12 us。 那么如果我们要定时 1us ，只需要计数 12 个脉冲。
-设置定时器 我们了解到定时 1us ，需要计数 12 个脉冲(12M 晶振的情况下)。 那么定时 1ms ，需要计数 12000 个脉冲。 首先要开启总中断使能和定时器0使能
-#include &quot;stc12c5a60s2.h&quot; #define FOSC 12000000L sbit P2_0 = P2^0; int main() { // 开启总中断和定时器0中断 EA = 1; ET0 = 1; // 设置定时器0工作在16位定时器模式 TMOD = 0x01; // 1ms 定时 TH0 = (65536 - FOSC/12/1000)/256; TL0 = (65536 - FOSC/12/1000)%256; // 定时器计时开始 TR0 = 1; while(1); } void Timer0_Rountine(void) interrupt 1 { // 重装载定时器 TH0 = (65536 - FOSC/12/1000)/256; TL0 = (65536 - FOSC/12/1000)%256; // 你要执行的任务，每1ms 执行一次 // 任务代码 }  " />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="https://moenn.github.io/blog/post/8051-%E5%8D%95%E7%89%87%E6%9C%BA%E8%AE%BE%E7%BD%AE%E5%AE%9A%E6%97%B6%E5%99%A8/" />
+</head>
 
 
-<meta itemprop="name" content="8051 单片机设置定时器">
-<meta itemprop="description" content=" 定时器有计数脉冲和定时两种模式，这篇文章写的是使用定时器0的16位定时器编写 1s 定时的程序过程。
-定时器是如何定时的 首先单片机是根据晶振发出的脉冲进行工作的，比如一个 stc 单片机使用了 12MHz 的外部晶振，这个晶振每秒会发出 12M = 12000000 个脉冲供单片机运行使用。反过来算一下，一个脉冲持续多少时间呢？ 1&frasl;12000000 s= 1&frasl;12 us。 那么如果我们要定时 1us ，只需要计数 12 个脉冲。
-设置定时器 我们了解到定时 1us ，需要计数 12 个脉冲(12M 晶振的情况下)。 那么定时 1ms ，需要计数 12000 个脉冲。 首先要开启总中断使能和定时器0使能
-#include &quot;stc12c5a60s2.h&quot; #define FOSC 12000000L sbit P2_0 = P2^0; int main() { // 开启总中断和定时器0中断 EA = 1; ET0 = 1; // 设置定时器0工作在16位定时器模式 TMOD = 0x01; // 1ms 定时 TH0 = (65536 - FOSC/12/1000)/256; TL0 = (65536 - FOSC/12/1000)%256; // 定时器计时开始 TR0 = 1; while(1); } void Timer0_Rountine(void) interrupt 1 { // 重装载定时器 TH0 = (65536 - FOSC/12/1000)/256; TL0 = (65536 - FOSC/12/1000)%256; // 你要执行的任务，每1ms 执行一次 // 任务代码 }  ">
-
-
-
-<meta itemprop="wordCount" content="103">
-
-
-
-<meta itemprop="keywords" content="" />
-<meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="8051 单片机设置定时器"/>
-<meta name="twitter:description" content=" 定时器有计数脉冲和定时两种模式，这篇文章写的是使用定时器0的16位定时器编写 1s 定时的程序过程。
-定时器是如何定时的 首先单片机是根据晶振发出的脉冲进行工作的，比如一个 stc 单片机使用了 12MHz 的外部晶振，这个晶振每秒会发出 12M = 12000000 个脉冲供单片机运行使用。反过来算一下，一个脉冲持续多少时间呢？ 1&frasl;12000000 s= 1&frasl;12 us。 那么如果我们要定时 1us ，只需要计数 12 个脉冲。
-设置定时器 我们了解到定时 1us ，需要计数 12 个脉冲(12M 晶振的情况下)。 那么定时 1ms ，需要计数 12000 个脉冲。 首先要开启总中断使能和定时器0使能
-#include &quot;stc12c5a60s2.h&quot; #define FOSC 12000000L sbit P2_0 = P2^0; int main() { // 开启总中断和定时器0中断 EA = 1; ET0 = 1; // 设置定时器0工作在16位定时器模式 TMOD = 0x01; // 1ms 定时 TH0 = (65536 - FOSC/12/1000)/256; TL0 = (65536 - FOSC/12/1000)%256; // 定时器计时开始 TR0 = 1; while(1); } void Timer0_Rountine(void) interrupt 1 { // 重装载定时器 TH0 = (65536 - FOSC/12/1000)/256; TL0 = (65536 - FOSC/12/1000)%256; // 你要执行的任务，每1ms 执行一次 // 任务代码 }  "/>
-
-  </head>
-
-  <body class="ma0 avenir bg-near-white">
-
-    
-   
-  
-
-  <header>
-    <div class="bg-black">
-      <nav class="pv3 ph3 ph4-ns" role="navigation">
-  <div class="flex-l justify-between items-center center">
-    <a href="https://moenn.github.io/blog/" class="f3 fw2 hover-white no-underline white-90 dib">
-      黄金之心号|博客
-    </a>
-    <div class="flex-l items-center">
-      
-
-      
-      
-
-
-
-
-
-
-
-
-
-
-
+<body>
+<div id="container">
+    <header id="header">
+    <div id="header-outer" class="outer">
+        <div id="header-inner" class="inner">
+            <a id="main-nav-toggle" class="nav-icon" href="javascript:;"></a>
+            <a id="logo" class="logo-text" href="https://mengsheng.me/">黄金之心号|博客</a>
+            <nav id="main-nav">
+                
+            </nav>
+            <nav id="sub-nav">
+                <div id="search-form-wrap">
+                </div>
+            </nav>
+        </div>
     </div>
-  </div>
-</nav>
+</header>
 
-    </div>
-  </header>
-
-
-
-    <main class="pb7" role="main">
-      
-  
-  <article class="flex-l flex-wrap justify-between mw8 center ph3">
-
-    <header class="mt4 w-100">
-      <p class="f6 b helvetica tracked">
-          
-        POSTS
-      </p>
-      <h1 class="f1 athelas mb1">8051 单片机设置定时器</h1>
-      
-      <time class="f6 mv4 dib tracked" datetime="0001-01-01T00:00:00Z">January 1, 0001</time>      
-      
-      
-    </header>
-
-    <section class="nested-copy-line-height lh-copy serif f4 nested-links nested-img mid-gray pr4-l w-two-thirds-l">
+    <section id="main" class="outer">
+        <article class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        <header class="article-header">
+            <h1 class="article-title" itemprop="name">8051 单片机设置定时器</h1>
+        </header>
+        
+        <div class="article-meta">
+            <a href="/post/8051-%E5%8D%95%E7%89%87%E6%9C%BA%E8%AE%BE%E7%BD%AE%E5%AE%9A%E6%97%B6%E5%99%A8/" class="article-date">
+                <time datetime='0001-01-01T00:00:00.000&#43;00:00' itemprop="datePublished">0001-01-01</time>
+            </a>
+            
+            
+            
+        </div>
+        <div class="article-entry" itemprop="articleBody">
+            
 
 <p>定时器有计数脉冲和定时两种模式，这篇文章写的是使用定时器0的16位定时器编写 1s 定时的程序过程。</p>
 
@@ -156,48 +105,83 @@ void Timer0_Rountine(void) interrupt 1
 }
 
 </code></pre>
-<ul class="pa0">
-  
-</ul>
-<div class="mt6">
+
+        </div>
+
         
-      </div>
+        
+        <div class="article-toc" >
+            <h3>Contents</h3>
+            <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li>
+<ul>
+<li>
+<ul>
+<li><a href="#定时器是如何定时的">定时器是如何定时的</a></li>
+<li><a href="#设置定时器">设置定时器</a></li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ul>
+</nav>
+        </div>
+        
+        
+
+        
+
+
+        
+    </div>
+    <nav id="article-nav">
+    
+    <a href="/post/220v%E4%BA%A4%E6%B5%81%E8%BD%AC12v%E7%9B%B4%E6%B5%81-%E7%BA%BF%E6%80%A7%E7%A8%B3%E5%8E%8B%E7%94%B5%E6%BA%90/" id="article-nav-newer" class="article-nav-link-wrap">
+        <div class="article-nav-title"><span>&lt;</span>&nbsp;
+            220v交流转12v直流 - 线性稳压电源
+        </div>
+    </a>
+    
+    
+    <a href="/post/python-%E5%A4%9A%E7%BA%BF%E7%A8%8B/" id="article-nav-older" class="article-nav-link-wrap">
+        <div class="article-nav-title">python 多线程&nbsp;<span>&gt;</span></div>
+    </a>
+    
+</nav>
+
+</article>
+
+        
     </section>
-
-    <aside class="w-30-l mt6-l">
-
-
-
-
-</aside>
-
-  </article>
-
-    </main>
-    <footer class="bg-black bottom-0 w-100 pa3" role="contentinfo">
-  <div class="flex justify-between">
-  <a class="f4 fw4 hover-white no-underline white-70 dn dib-ns pv2 ph3" href="https://moenn.github.io/blog/" >
-    &copy; 2019 黄金之心号|博客
-  </a>
-    <div>
-
-
-
-
-
-
-
-
-
-
-</div>
-  </div>
-</footer>
-
+    <footer id="footer">
+    <div class="outer">
+        <div id="footer-info" class="inner">
+            &copy; 2019 黄金之心号|博客
+            <br />
+            Powered by <a href="https://gohugo.io" target="_blank">Hugo</a> with theme <a href="https://github.com/carsonip/hugo-theme-minos" target="_blank">Minos</a>
+        </div>
+    </div>
     
 
-  <script src="/blog/dist/js/app.3fc0f988d21662902933.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/styles/tomorrow-night.min.css" integrity="sha256-2wL88NKUqvJi/ExflDzkzUumjUM73mcK2gBvBBeLvTk=" crossorigin="anonymous" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/highlight.min.js" integrity="sha256-KbfTjB0WZ8vvXngdpJGY3Yp3xKk+tttbqClO11anCIU=" crossorigin="anonymous"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
 
+    
+    <script>
+        document.getElementById('main-nav-toggle').addEventListener('click', function () {
+            var header = document.getElementById('header');
+            if (header.classList.contains('mobile-on')) {
+                header.classList.remove('mobile-on');
+            } else {
+                header.classList.add('mobile-on');
+            }
+        });
+    </script>
+</footer>
 
-  </body>
+</div>
+</body>
 </html>
