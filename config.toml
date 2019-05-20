@@ -1,5 +1,5 @@
-baseURL = "https://moenn.github.io/blog/"
+baseURL = "https://www.moenn.github.io/blog/"
 languageCode = "zh-cn"
 title = "黄金之心号|博客"
-theme = "ananke"
+theme = "hugo-theme-minos"
 publishDir = "docs"
