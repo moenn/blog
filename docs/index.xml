@@ -6,19 +6,10 @@
     <description>Recent content on 黄金之心号|博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Tue, 21 May 2019 03:59:25 +0800</lastBuildDate>
+    <lastBuildDate>Tue, 21 May 2019 02:51:43 +0800</lastBuildDate>
     
 	<atom:link href="https://mengsheng.me/index.xml" rel="self" type="application/rss+xml" />
     
-    
-    <item>
-      <title>Two</title>
-      <link>https://mengsheng.me/post/two/</link>
-      <pubDate>Tue, 21 May 2019 03:59:25 +0800</pubDate>
-      
-      <guid>https://mengsheng.me/post/two/</guid>
-      <description>ttt</description>
-    </item>
     
     <item>
       <title>220v交流转12v直流 - 线性稳压电源</title>
@@ -31,15 +22,6 @@
 整流桥可以选择集成芯片 DB107， 也可以使用四只二极管(比如1N4007)搭建。L7812 的输入为12v ~ 35v 的直流电压， 输出为稳定的 12v 直流电压。
 引脚连接 7812 引脚图如下，从正面看，从左到右依次为 输入(input)、地(gnd)、输出(output)。 DB107 引脚图如下，标注 &amp;lsquo;~&amp;rsquo; 为交流输入，标注 &amp;lsquo;+&amp;rsquo;,&amp;lsquo;-&amp;rsquo; 为直流输出。
 焊接时注意事项  这个电路使用洞洞板焊接比较方便。 L7812 引脚较粗，选择板子时最好试插一下。 两个电解电容要注意极性。 可以给 7812 装一个小的散热片。 如果选用二极管组成整流桥，应留出四个引出点。  </description>
-    </item>
-    
-    <item>
-      <title>First</title>
-      <link>https://mengsheng.me/post/first/</link>
-      <pubDate>Tue, 21 May 2019 02:16:45 +0800</pubDate>
-      
-      <guid>https://mengsheng.me/post/first/</guid>
-      <description></description>
     </item>
     
     <item>
