@@ -4,12 +4,10 @@ title = "黄金之心号|博客"
 publishDir = "docs"
 theme = "hugo-primer"
 hasCJKLanguage = true
-summaryLength = 70
+summaryLength = 0
 # Code pen
 pygmentsCodeFences = true
 pygmentsUseClasses = true
-googleAnalytics = "U-12345678-0"
-
 
 [frontmatter]
 # update sitemap.xml's lastmod datetime by file change time, instead of git.
