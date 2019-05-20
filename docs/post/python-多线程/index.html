@@ -1,118 +1,113 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    
-    
-    
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>
-      
-  python 多线程 &ndash; 黄金之心号|博客
+<!doctype html>
+<html lang="en">
+<head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta content='text/html; charset=utf-8' http-equiv='content-type' />
 
-    </title>
-    
-    
-    <meta name="description" property="og:description" content="|单片机,硬件,编程">
-    
-
-    <meta name="apple-mobile-web-app-title" content="黄金之心号|博客">
-    
-    
-    
-    
+  <title>python 多线程 - 黄金之心号|博客</title>
+  <meta content='python 多线程 - 黄金之心号|博客' property='title' />
+  <meta content='python 多线程 - 黄金之心号|博客' property='og:title' />
 
 
-    <link rel="stylesheet" href="/assets/syntax.css">
-    <link rel="stylesheet" href="/assets/primer-build.css">
-    <link rel="stylesheet" href="/assets/style.css">
-  </head>
+<meta property="og:description" content="在进行 IO 密集型任务时，比如编写网络爬虫、读写文件相关的脚本，使用多线程可以显著提高程序的运行速度。下面是一个线性执行任务的代码和相同功能但是引入多线程的代码，来比较它们一下性能差距。
+原始代码: import urllib.request import time import socket def get_result(url): try: res = urllib.request.urlopen(url, timeout=3) page = res.read() print(url, len(page)) # 捕捉连接超时异常 except socket.timeout: print(&quot;time out\n&quot;) if __name__ == &quot;__main__&quot;: start = time.time() sites = [ &#39;https://www.baidu.com&#39;, &#39;https://www.sogou.com/&#39;, &#39;https://www.taobao.com&#39;, &#39;https://www.jd.com/&#39;, &#39;https://www.mi.com/&#39;, &#39;http://www.sina.com.cn/&#39;, &#39;https://www.163.com/&#39;, &#39;https://36kr.com/&#39;, &#39;https://www.ifanr.com/&#39;, &#39;https://www.huxiu.com/&#39; ] for url in sites: get_result(url) end = time.time() print(&quot;cost {}&quot;.format(end - start))  上面代码的功能是依次访问 sites 列表中的 url, 并打印出该 url 和其页面的大小。 执行结果为" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://mengsheng.me/post/python-%E5%A4%9A%E7%BA%BF%E7%A8%8B/" />
 
 
-  <body class="bg-gray">
-    <div id="holy" class="container-lg bg-white h-100">
 
-      <div id="header" class="px-1 bg-white">
-        <nav class="UnderlineNav UnderlineNav--right px-2">
-  <a class="UnderlineNav-actions muted-link h2" href="https://mengsheng.me/">
-    黄金之心号|博客
-  </a>
 
-  
+
+
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.55.6" />
+
+<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600" rel="stylesheet">
+<style type="text/css">/*https://coolors.co/afd5aa-f0f2ef-a69f98-3d3d3d-8c6057*/
+:root {
+  --main-color: #8C6056; 
+  --secondary-color: #AFD5AA;
+  --logo-text-color: #fff;
+  --body-text-color: #3d3d3d;
+  --heading-text-color: #383838;
+  --background-color: #fff;
+}</style>
+<link href='/css/tachyons.min.css' rel="stylesheet">
+<link href='/css/styles.css' rel="stylesheet">
+
+
+<link rel="icon" 
+ 
+  href='/favicon.ico'
+
+type="image/x-icon"/>
+
+<link href='/feed.xml' rel="alternate" type="application/atom+xml" title="黄金之心号|博客" />
+</head>
+<body class="global-font">
+  <nav class=" justify-between border-box pa3 pl3-l pr2-l mt1 mt0-ns" id="navbar">
+  <div class="flex">
+    <a class="f4 fw6 ttu no-underline dim bg-main-color pv1 ph2 br2" id="site-title" href='/' title="Home">黄金之心号|博客</a>
+  </div>
   
 </nav>
-
-      </div>
-
-      <div role="main" id="main" class="holy-main markdown-body px-4 bg-white">
-        
-
-<div class="Subhead">
-  <div class="Subhead-heading">
-    <div class="h1 mt-3 mb-1">python 多线程</div>
-  </div>
-  <div class="Subhead-description">
-    
-
-
-
-
-
-
-    
-    <div class="float-md-right">
-      <span title="Lastmod: 2019-05-21. Published at: 0001-01-01.">
-        
-          Lastmod: 2019-05-21
-        
-      </span>
-    </div>
-    
-  </div>
-</div>
-<article>
   
-  <section class="pb-6 mb-3 border-bottom">
+<main class="center mv4 content-width ph3">
+  <div class="f3 fw6 heading-color heading-font post-title">python 多线程</div>
+  <p class="silver f6 mt1 mb4 post-meta">
     
+    
+    
+    
+  </p>
+  <div class="lh-copy post-content">
 
 <p>在进行 IO 密集型任务时，比如编写网络爬虫、读写文件相关的脚本，使用多线程可以显著提高程序的运行速度。下面是一个线性执行任务的代码和相同功能但是引入多线程的代码，来比较它们一下性能差距。</p>
 
 <h3 id="原始代码">原始代码:</h3>
-<div class="highlight"><pre class="chroma"><code class="language-python" data-lang="python"><span class="kn">import</span> <span class="nn">urllib.request</span>
-<span class="kn">import</span> <span class="nn">time</span>
-<span class="kn">import</span> <span class="nn">socket</span>
 
-<span class="k">def</span> <span class="nf">get_result</span><span class="p">(</span><span class="n">url</span><span class="p">):</span>
-    <span class="k">try</span><span class="p">:</span>
-        <span class="n">res</span> <span class="o">=</span> <span class="n">urllib</span><span class="o">.</span><span class="n">request</span><span class="o">.</span><span class="n">urlopen</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
-        <span class="n">page</span> <span class="o">=</span> <span class="n">res</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
-        <span class="k">print</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">page</span><span class="p">))</span>
-    <span class="c1"># 捕捉连接超时异常</span>
-    <span class="k">except</span> <span class="n">socket</span><span class="o">.</span><span class="n">timeout</span><span class="p">:</span>
-        <span class="k">print</span><span class="p">(</span><span class="s2">&#34;time out</span><span class="se">\n</span><span class="s2">&#34;</span><span class="p">)</span>
+<pre><code class="language-python">import urllib.request
+import time
+import socket
+
+def get_result(url):
+    try:
+        res = urllib.request.urlopen(url, timeout=3)
+        page = res.read()
+        print(url, len(page))
+    # 捕捉连接超时异常
+    except socket.timeout:
+        print(&quot;time out\n&quot;)
 
 
-<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&#34;__main__&#34;</span><span class="p">:</span>
-    <span class="n">start</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
-    <span class="n">sites</span> <span class="o">=</span> <span class="p">[</span>
-        <span class="s1">&#39;https://www.baidu.com&#39;</span><span class="p">,</span>
-        <span class="s1">&#39;https://www.sogou.com/&#39;</span><span class="p">,</span>
-        <span class="s1">&#39;https://www.taobao.com&#39;</span><span class="p">,</span>
-        <span class="s1">&#39;https://www.jd.com/&#39;</span><span class="p">,</span>
-        <span class="s1">&#39;https://www.mi.com/&#39;</span><span class="p">,</span>
-        <span class="s1">&#39;http://www.sina.com.cn/&#39;</span><span class="p">,</span>
-        <span class="s1">&#39;https://www.163.com/&#39;</span><span class="p">,</span>
-        <span class="s1">&#39;https://36kr.com/&#39;</span><span class="p">,</span>
-        <span class="s1">&#39;https://www.ifanr.com/&#39;</span><span class="p">,</span>
-        <span class="s1">&#39;https://www.huxiu.com/&#39;</span>
+if __name__ == &quot;__main__&quot;:
+    start = time.time()
+    sites = [
+        'https://www.baidu.com',
+        'https://www.sogou.com/',
+        'https://www.taobao.com',
+        'https://www.jd.com/',
+        'https://www.mi.com/',
+        'http://www.sina.com.cn/',
+        'https://www.163.com/',
+        'https://36kr.com/',
+        'https://www.ifanr.com/',
+        'https://www.huxiu.com/'
 
-    <span class="p">]</span>
+    ]
 
-    <span class="k">for</span> <span class="n">url</span> <span class="ow">in</span> <span class="n">sites</span><span class="p">:</span>
-        <span class="n">get_result</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+    for url in sites:
+        get_result(url)
 
-    <span class="n">end</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
-    <span class="k">print</span><span class="p">(</span><span class="s2">&#34;cost {}&#34;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">end</span> <span class="o">-</span> <span class="n">start</span><span class="p">))</span></code></pre></div>
+    end = time.time()
+    print(&quot;cost {}&quot;.format(end - start))
+</code></pre>
+
 <p>上面代码的功能是依次访问 sites 列表中的 url, 并打印出该 url 和其页面的大小。
 执行结果为</p>
 
@@ -133,40 +128,43 @@ cost 53.14170527458191
 <p>在速度上，可以看到下载一共 10 个页面用时约为 50s，平均访问一个页面要 5 s 。 而且执行结果中打印 url 的顺序与 sites 列表中的 url 顺序相同。 上述脚本是阻塞的，即在完全处理完一个 url 之前不会处理另一个 url。 许多时间浪费在等待网络 IO 上。</p>
 
 <h3 id="引入多线程后的代码">引入多线程后的代码</h3>
-<div class="highlight"><pre class="chroma"><code class="language-python" data-lang="python"><span class="kn">from</span> <span class="nn">concurrent.futures</span> <span class="kn">import</span> <span class="n">ThreadPoolExecutor</span>
-<span class="kn">import</span> <span class="nn">urllib.request</span>
-<span class="kn">import</span> <span class="nn">socket</span> 
-<span class="kn">import</span> <span class="nn">time</span>
 
-<span class="k">def</span> <span class="nf">get_result</span><span class="p">(</span><span class="n">url</span><span class="p">):</span>
-    <span class="k">try</span><span class="p">:</span>
-        <span class="n">res</span> <span class="o">=</span> <span class="n">urllib</span><span class="o">.</span><span class="n">request</span><span class="o">.</span><span class="n">urlopen</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
-        <span class="n">page</span> <span class="o">=</span> <span class="n">res</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
-        <span class="k">print</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">page</span><span class="p">))</span>
-    <span class="c1"># 捕捉连接超时异常</span>
-    <span class="k">except</span> <span class="n">socket</span><span class="o">.</span><span class="n">timeout</span><span class="p">:</span>
-        <span class="k">print</span><span class="p">(</span><span class="s2">&#34;time out</span><span class="se">\n</span><span class="s2">&#34;</span><span class="p">)</span>
+<pre><code class="language-python">from concurrent.futures import ThreadPoolExecutor
+import urllib.request
+import socket 
+import time
 
-<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&#34;__main__&#34;</span><span class="p">:</span>
-    <span class="n">start</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
-    <span class="n">sites</span> <span class="o">=</span> <span class="p">[</span>
-        <span class="s1">&#39;https://www.bing.com&#39;</span><span class="p">,</span>
-        <span class="s1">&#39;https://www.baidu.com&#39;</span><span class="p">,</span>
-        <span class="s1">&#39;https://www.taobao.com&#39;</span><span class="p">,</span>
-        <span class="s1">&#39;https://www.jd.com/&#39;</span><span class="p">,</span>
-        <span class="s1">&#39;https://www.mi.com/&#39;</span><span class="p">,</span>
-        <span class="s1">&#39;http://www.sina.com.cn/&#39;</span><span class="p">,</span>
-        <span class="s1">&#39;https://www.163.com/&#39;</span><span class="p">,</span>
-        <span class="s1">&#39;https://36kr.com/&#39;</span><span class="p">,</span>
-        <span class="s1">&#39;https://www.ifanr.com/&#39;</span><span class="p">,</span>
-        <span class="s1">&#39;https://www.huxiu.com/&#39;</span>
+def get_result(url):
+    try:
+        res = urllib.request.urlopen(url, timeout=3)
+        page = res.read()
+        print(url, len(page))
+    # 捕捉连接超时异常
+    except socket.timeout:
+        print(&quot;time out\n&quot;)
 
-    <span class="p">]</span>
-    <span class="k">with</span> <span class="n">ThreadPoolExecutor</span><span class="p">()</span> <span class="k">as</span> <span class="n">executor</span><span class="p">:</span>
-        <span class="n">executor</span><span class="o">.</span><span class="nb">map</span><span class="p">(</span><span class="n">get_result</span><span class="p">,</span> <span class="n">sites</span><span class="p">)</span>
+if __name__ == &quot;__main__&quot;:
+    start = time.time()
+    sites = [
+        'https://www.bing.com',
+        'https://www.baidu.com',
+        'https://www.taobao.com',
+        'https://www.jd.com/',
+        'https://www.mi.com/',
+        'http://www.sina.com.cn/',
+        'https://www.163.com/',
+        'https://36kr.com/',
+        'https://www.ifanr.com/',
+        'https://www.huxiu.com/'
 
-    <span class="n">end</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
-    <span class="k">print</span><span class="p">(</span><span class="s2">&#34;cost {}&#34;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">end</span> <span class="o">-</span> <span class="n">start</span><span class="p">))</span></code></pre></div>
+    ]
+    with ThreadPoolExecutor() as executor:
+        executor.map(get_result, sites)
+
+    end = time.time()
+    print(&quot;cost {}&quot;.format(end - start))
+</code></pre>
+
 <p>仅额外添加了 3 行代码，在下文解释。
 执行结果为:</p>
 
@@ -185,11 +183,14 @@ cost 9.555423736572266
 </code></pre>
 
 <p>在速度上，现在用时约为 10s，平均 1s 就能下载一个页面，这个速度是能让人接受的。并且可以看到执行结果中打印 url 的顺序与 sites 列表中的 url 顺序不同。 因为上述代码是非阻塞的，在处理一个 url 时，如果程序在等待远程服务器响应，那么程序会去访问下一个 url。 如果有任一个 url 处理完毕，就会首先返回它的执行结果。</p>
-<div class="highlight"><pre class="chroma"><code class="language-python" data-lang="python"><span class="kn">from</span> <span class="nn">concurrent.futures</span> <span class="kn">import</span> <span class="n">ThreadPoolExecutor</span>
-<span class="o">...</span>
-<span class="o">...</span>
-    <span class="k">with</span> <span class="n">ThreadPoolExecutor</span><span class="p">()</span> <span class="k">as</span> <span class="n">executor</span><span class="p">:</span>
-        <span class="n">executor</span><span class="o">.</span><span class="nb">map</span><span class="p">(</span><span class="n">get_result</span><span class="p">,</span> <span class="n">sites</span><span class="p">)</span></code></pre></div>
+
+<pre><code class="language-python">from concurrent.futures import ThreadPoolExecutor
+...
+...
+    with ThreadPoolExecutor() as executor:
+        executor.map(get_result, sites)
+</code></pre>
+
 <p>多线程版本额外添加了上面 3 行代码，首先第一行导入<code>concurrent.futures</code>这个异步执行库, 第二行中的<code>ThreadPoolExecutor</code>是这个库提供的线程池执行器。使用它的 <code>map</code> 函数执行我们需要多线程的代码(即 <code>get_results()</code>函数)，然后这个执行器就会自动分配多个线程，并在多个线程间切换，这个切换过程是不用手动控制的。</p>
 
 <p>总结: 使用<code>ThreadPoolExecutor.map(func, *iterables)</code> 可以非常简单地在代码中引入多线程，只需要你编写一个函数和创建一个可迭代对象。</p>
@@ -197,68 +198,102 @@ cost 9.555423736572266
 <h3 id="相关链接">相关链接</h3>
 
 <p><a href="https://docs.python.org/3/library/concurrent.futures.html">concurrent.futures</a></p>
+</div>
+</main>
+ 
 
-  </section>
 
-  <section>
-    
-      
-    
-  </section>
-</article>
 
-      </div>
 
-      <div id="side" class="pr-1 bg-white">
-        <aside class="pr-3">
-          
+
+
+<div class="tl fixed list-pages lh-copy" id="contents-list"></div>
+
+
+
+<div class="pagination tc tr-l db fixed-l bottom-2-l right-2-l mb3 mb0-l">
   
-    <div id="toc" class="Box Box--blue mb-3">
-      <b>python 多线程</b>
-      <nav id="TableOfContents">
-<ul>
-<li>
-<ul>
-<li>
-<ul>
-<li><a href="#原始代码">原始代码:</a></li>
-<li><a href="#引入多线程后的代码">引入多线程后的代码</a></li>
-<li><a href="#相关链接">相关链接</a></li>
-</ul></li>
-</ul></li>
-</ul>
-</nav>
-    </div>
+<a id="scroll-to-top" class="f6 o-0 link br2 ph2 pv1 mb1 bg-main-color pointer" onclick="topFunction()" style="color: #fff; visibility: hidden; display: none; transition: opacity .5s, visibility .5s;" title="back to top">back to top</a>
+<br>
+  <p class="mb0 mt2">
+  
+  <a href="https://mengsheng.me/post/8051-%E5%8D%95%E7%89%87%E6%9C%BA%E8%AE%BE%E7%BD%AE%E5%AE%9A%E6%97%B6%E5%99%A8/">next post</a>
+  </p>
+</div>
+
+  <footer class="content-width mt0 mt5-l mb4 f6 center ph3 gray tc tl-l">
+  <hr class="dn db-l ml0-l gray w3"><br>
+  Powered by <a href="https://gohugo.io/" target="_blank" class="link gray dim">Hugo</a>, based on the <a href="https://github.com/lingxz/er" target="_blank" class="link gray dim">Er</a> theme. <br>
+  
+</footer>
   
 
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.css">
+<style>.is-active-link::before { background-color: var(--secondary-color); }</style>
+
+
+
+
+<script type="text/javascript">
+var prevScrollpos = window.pageYOffset;
+window.onscroll = function() {
+  var currentScrollPos = window.pageYOffset;
+
   
-    <div>
-      
-    </div>
+  if (document.getElementById("tag-cloud") !== null) { 
+    if (prevScrollpos > currentScrollPos) { 
+      document.getElementById("tag-cloud").style.visibility = "visible";
+      document.getElementById("tag-cloud").style.opacity = "1";
+    } else {
+      document.getElementById("tag-cloud").style.visibility = "hidden";
+      document.getElementById("tag-cloud").style.opacity = "0";
+    }
+  }
   
 
-        </aside>
-      </div>
+  
+  if (document.body.scrollTop > 1000 || document.documentElement.scrollTop > 1000) {
+      document.getElementById("scroll-to-top").style.display = "inline";
+      document.getElementById("scroll-to-top").style.visibility = "visible";
+      document.getElementById("scroll-to-top").style.opacity = "1";
+  } else {
+      document.getElementById("scroll-to-top").style.visibility = "hidden";
+      document.getElementById("scroll-to-top").style.opacity = "0";
+  }
+  
+  prevScrollpos = currentScrollPos;
+}
 
-      <div id="footer" class="pt-2 pb-3 bg-white text-center">
-        
 
-  <span class="text-small text-gray">
+function topFunction() {
+  document.body.scrollTop = 0; 
+  document.documentElement.scrollTop = 0; 
+}
+
+
+
+
+
+
+if (document.getElementById("contents-list") !== null && document.getElementsByClassName("post-content").length !== 0) { 
+  tocbot.init({
     
-
-    Powered by the
-    <a href="https://github.com/qqhann/hugo-primer" class="link-gray-dark">Hugo-Primer</a> theme for
-    <a href="https://gohugo.io" class="link-gray-dark">Hugo</a>.
-  </span>
-
-
-      </div>
-    </div>
-
-
+    tocSelector: '#contents-list',
     
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    contentSelector: '.post-content',
     
-    <script type="text/x-mathjax-config">MathJax.Hub.Config({ tex2jax: { inlineMath: [['$','$'], ['\\(','\\)']] } });</script>
-  </body>
+    headingSelector: 'h1, h2, h3',
+  });
+}
+
+
+</script>
+
+
+
+
+</body>
 </html>
