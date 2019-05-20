@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en-us">
+<html lang="zh-cn">
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
@@ -36,7 +36,7 @@
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://moenn.github.io/blog/" />
 
-<meta property="og:updated_time" content="2019-05-21T01:41:09&#43;08:00"/>
+<meta property="og:updated_time" content="2019-03-25T23:28:43&#43;08:00"/>
 
 <meta itemprop="name" content="黄金之心号|博客">
 <meta itemprop="description" content="">
@@ -124,14 +124,91 @@
       
       <div class="blah w-100">
         <h1 class="f3 fw1 athelas mt0 lh-title">
-          <a href="/blog/post/first/" class="color-inherit dim link">
-            First
+          <a href="/blog/post/centos-%E5%AE%89%E8%A3%85-python3/" class="color-inherit dim link">
+            centos 安装 python3
             </a>
         </h1>
         <div class="f6 f5-l lh-copy nested-copy-line-height nested-links">
-          hello hugo
+          环境: centos 7.5
+从源代码安装 python3 编译python需要 gcc 编译器、ziplib 等库文件，使用下面命令安装这些预先条件
+yum install gcc openssl-devel bzip2-devel libffi-devel zlib-devel sqlite-devel
+下载 python 源代码
+wget https://www.python.org/ftp/python/3.7.2/Python-3.7.2.tgz
+解压
+tar -xzvf Python-3.7.2.tgz
+进入解压目录
+cd Python-3.7.2
+编译，其中 &ndash;prefix 选项可以将 python3 安装到该目录
+./configure --prefix=/usr/local/python3
+安装
+make &amp;&amp; make install
+添加python3 的符号链接
+ln -s /usr/local/python3/bin/python3 /usr/local/bin/python3
+查看是否安装成功
+python3 -V 安装pip3 下载 get-pip.py 源文件
+curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
+调用 python3 安装
+python3 get-pip.py
+查看 pip3 是否已下载
+ls /usr/local/python3/bin/pip3
+如果上面的文件存在的话，创建它的软连接到 /usr/local/bin
         </div>
-          <a href="/blog/post/first/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
+          <a href="/blog/post/centos-%E5%AE%89%E8%A3%85-python3/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
+        
+      </div>
+    </div>
+  </div>
+</article>
+
+          </div>
+        
+          <div class="relative w-100 mb4">
+            
+<article class="bb b--black-10">
+  <div class="db pv4 ph3 ph0-l no-underline dark-gray">
+    <div class="flex flex-column flex-row-ns">
+      
+      <div class="blah w-100">
+        <h1 class="f3 fw1 athelas mt0 lh-title">
+          <a href="/blog/post/%E6%A0%91%E8%8E%93%E6%B4%BE-&#43;-hc-sr04-%E6%B5%8B%E8%B7%9D%E6%A8%A1%E5%9D%97/" class="color-inherit dim link">
+            树莓派 &#43; HC SR04 测距模块
+            </a>
+        </h1>
+        <div class="f6 f5-l lh-copy nested-copy-line-height nested-links">
+          超声波测距模块 HC-SR04 非常易于使用，这篇文章就介绍 HC-SR04 的测距原理、树莓派如何与 HC-SR04 接线，以及使用 python 程序控制测距的方法。
+HC-SR04 测距过程 下图说明了超声波的测距原理: HC-SR04 引脚图: HC-SR04 模块包含了超声波发射器、超声波接收器和控制电路，可以提供 3cm - 4m 的距离测量。引脚图如上图所示有4个引脚：电源引脚(5v Vcc),触发脉冲引脚(Trig),返回脉冲引脚(Echo),地引脚(Gnd)。 如何使用呢？下面是 HC-SR04 的工作过程： 1. 树莓派向 Trig 脚发送一个持续时间至少为 10us 的高电平信号。 2. HC-SR04 接收到树莓派的触发信号，自动发送 40 Khz 的超声波，并把 Echo 脚置为高电平。然后开始检测返回的声波。 3. 当检测到返回的声波时，Echo 脚被置为低电平。
+从上述过程可以看出，Echo 脚的高电平持续时间就是超声波从发射到返回所经过的时间间隔 T。那么传感器和物体间的距离就能用下面的公式计算： 距离(Distance) = 超声波速度(340m/s) * 时间 T / 2
+HC-SR04 与树莓派的接线 树莓派 GPIO 引脚图 接线图  电源引脚 Vcc 与树莓派的 5v 脚（物理引脚2）相连，地引脚 Gnd 与树莓派的 Gnd 脚（物理引脚6）相连。
+ 触发脉冲引脚 Trig 用来接收来自树莓派的控制信号，接任意 GPIO 口。图中连接了 GPIO_23（物理引脚16)。
+        </div>
+          <a href="/blog/post/%E6%A0%91%E8%8E%93%E6%B4%BE-&#43;-hc-sr04-%E6%B5%8B%E8%B7%9D%E6%A8%A1%E5%9D%97/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
+        
+      </div>
+    </div>
+  </div>
+</article>
+
+          </div>
+        
+          <div class="relative w-100 mb4">
+            
+<article class="bb b--black-10">
+  <div class="db pv4 ph3 ph0-l no-underline dark-gray">
+    <div class="flex flex-column flex-row-ns">
+      
+      <div class="blah w-100">
+        <h1 class="f3 fw1 athelas mt0 lh-title">
+          <a href="/blog/post/%E6%A0%91%E8%8E%93%E6%B4%BE%E5%85%A5%E9%97%A8%E4%B8%89%E8%87%AA%E5%8A%A8%E8%BF%9E%E6%8E%A5-wifi/" class="color-inherit dim link">
+            树莓派入门(三)自动连接 wifi
+            </a>
+        </h1>
+        <div class="f6 f5-l lh-copy nested-copy-line-height nested-links">
+          既然树莓派3搭载了无线网卡，那么最方便的连接网络的方法就是 wifi 了，而且若你的 pc 连接了同一个网络的话还可以 ssh 上去控制它。但要注意树莓派可能连接不了 5G 频率的无线网络。要进行这一节的内容，首先确保你安装好了 raspbian 系统，并且能够 ssh 到树莓派。
+方式一 图形界面 raspi-config 如果你用的 raspbian 系统较新的话，就可以使用图形界面 raspi-config 来配置 wifi。 1. 先 ssh 进树莓派，输入 sudo raspi-config 进入设置界面。使用上下箭头进行选择，ENTER 键确认选择，依次进入 2.Network Options - Wi-Fi ，选择国家代码(CN)，然后在 SSID 界面输入无线网络的名称，在 Passphrase 界面输入密码，按回车键确认就配置好了。最后 ESC 返回命令行。
+![raspi-config.png](https://i.loli.net/2018/09/22/5ba64502eef8e.png) ![country_code.png](https://i.loli.net/2018/09/22/5ba645029cfc6.png)   输入 sudo reboot 重启树莓派，把树莓派的网线拔掉。 在路由器管理界面或在 PC 上使用 nmap 查找树莓派的 ip ，若能找到则说明树莓派成功连入无线网络了。(若没有就是配置过程不正确，比如无线网络名字或密码打错)。 使用上一步的 ip ssh 到树莓派，输入 sudo ifconfig wlan0 查看无线网络连接。
+  方式二 命令行  安装 vim, sudo apt-get install vim.
+        </div>
+          <a href="/blog/post/%E6%A0%91%E8%8E%93%E6%B4%BE%E5%85%A5%E9%97%A8%E4%B8%89%E8%87%AA%E5%8A%A8%E8%BF%9E%E6%8E%A5-wifi/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
         
       </div>
     </div>
@@ -142,6 +219,41 @@
         
       </section>
 
+      
+      <section class="w-100">
+        <h1 class="f3">More</h1>
+        
+        
+          <h2 class="f5 fw4 mb4 dib mr3">
+            <a href="/blog/post/%E6%A0%91%E8%8E%93%E6%B4%BE%E5%85%A5%E9%97%A8%E4%BA%8Cssh/" class="link black dim">
+              树莓派入门(二)ssh.md
+            </a>
+          </h2>
+        
+          <h2 class="f5 fw4 mb4 dib mr3">
+            <a href="/blog/post/%E6%A0%91%E8%8E%93%E6%B4%BE%E5%85%A5%E9%97%A8%E4%B8%80%E5%AE%89%E8%A3%85%E7%B3%BB%E7%BB%9F/" class="link black dim">
+              树莓派入门(一)安装系统
+            </a>
+          </h2>
+        
+          <h2 class="f5 fw4 mb4 dib mr3">
+            <a href="/blog/post/220v%E4%BA%A4%E6%B5%81%E8%BD%AC12v%E7%9B%B4%E6%B5%81-%E7%BA%BF%E6%80%A7%E7%A8%B3%E5%8E%8B%E7%94%B5%E6%BA%90/" class="link black dim">
+              220v交流转12v直流 - 线性稳压电源
+            </a>
+          </h2>
+        
+          <h2 class="f5 fw4 mb4 dib mr3">
+            <a href="/blog/post/8051-%E5%8D%95%E7%89%87%E6%9C%BA%E8%AE%BE%E7%BD%AE%E5%AE%9A%E6%97%B6%E5%99%A8/" class="link black dim">
+              8051 单片机设置定时器
+            </a>
+          </h2>
+        
+
+        
+        
+          <a href="/blog/post/" class="link db f6 pa2 br3 bg-mid-gray white dim w4 tc">All Posts</a>
+        
+        </section>
       
 
       </div>
