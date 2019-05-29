@@ -32,7 +32,7 @@ date:   2019-05-29
 	| DSP2833x_MemCopy.c           | C:\ti\c2000\C2000Ware_1_00_06_00\device_support\f2833x\common\source |
 
 4. 在 main.c 文件中添加函数声明
-	```
+	```c
 	extern Uint16 RamfuncsLoadStart;
 	extern Uint16 RamfuncsLoadEnd;
 	extern Uint16 RamfuncsRunStart;
@@ -40,7 +40,7 @@ date:   2019-05-29
 	```
 
 5. 在 main.c 文件中的 main()函数开头部分添加语句
-	```
+	```c
     InitSysCtrl();
     memcpy(&RamfuncsRunStart, &RamfuncsLoadStart, (Uint32)&RamfuncsLoadSize);
     InitFlash();
