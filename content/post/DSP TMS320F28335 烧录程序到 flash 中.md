@@ -11,40 +11,42 @@ date:   2019-05-29
 ### 烧录步骤
 1. 选择 Boot Mode 为 Jump to Flash. 根据 28335 数据手册的 6.1.9一节，向下表中的 4 个 GPIO 口输入高电平即可。
 
-	| MODE | GPIO87/XA15 | GPIO86/XA14 | GPIO85/XA13 | GPIO84/XA12 | MODE          |
-	|------|-------------|-------------|-------------|-------------|---------------|
-	| F    | 1           | 1           | 1           | 1           | Jump to Flash |
+    | MODE | GPIO87/XA15 | GPIO86/XA14 | GPIO85/XA13 | GPIO84/XA12 | MODE          |
+    |------|-------------|-------------|-------------|-------------|---------------|
+    | F    | 1           | 1           | 1           | 1           | Jump to Flash |
 
-	可以使用如下的电路图。
+    可以使用如下的电路图。
 
-	![Boot_from_flash.png](https://i.loli.net/2019/05/29/5cee4b68bef7678719.png)
+    ![Boot_from_flash.png](https://i.loli.net/2019/05/29/5cee4b68bef7678719.png)
 
 2. 在 `28335_RAM_Lnk.cmd` 文件上右键，勾选为 exclude from Build。 
 
-	![exclude_from_build.png](https://i.loli.net/2019/05/29/5cee4bbd632cb23470.png)
+    ![exclude_from_build.png](https://i.loli.net/2019/05/29/5cee4bbd632cb23470.png)
 
 3. 在工程项目上右键 => add file, 添加以下文件。
 
-	|  文件                        | 所在位置                                                             |
-	|------------------------------|----------------------------------------------------------------------|
-	| F28335.cmd                   | C:\ti\c2000\C2000Ware_1_00_06_00\device_support\f2833x\common\cmd    |
-	| DSP2833x_CodeStartBranch.asm | C:\ti\c2000\C2000Ware_1_00_06_00\device_support\f2833x\common\source |
-	| DSP2833x_MemCopy.c           | C:\ti\c2000\C2000Ware_1_00_06_00\device_support\f2833x\common\source |
+    |  文件                        | 所在位置                                                             |
+    |------------------------------|----------------------------------------------------------------------|
+    | F28335.cmd                   | C:\ti\c2000\C2000Ware_1_00_06_00\device_support\f2833x\common\cmd    |
+    | DSP2833x_CodeStartBranch.asm | C:\ti\c2000\C2000Ware_1_00_06_00\device_support\f2833x\common\source |
+    | DSP2833x_MemCopy.c           | C:\ti\c2000\C2000Ware_1_00_06_00\device_support\f2833x\common\source |
 
-4. 在 main.c 文件中添加函数声明
-	```
-	extern Uint16 RamfuncsLoadStart;
-	extern Uint16 RamfuncsLoadEnd;
-	extern Uint16 RamfuncsRunStart;
-	extern Uint16 RamfuncsLoadSize;
-	```
+4. 在 main.c 文件中添加函数声明 
 
-5. 在 main.c 文件中的 main()函数开头部分添加语句
-	```
+    ```
+    extern Uint16 RamfuncsLoadStart;
+    extern Uint16 RamfuncsLoadEnd;
+    extern Uint16 RamfuncsRunStart;
+    extern Uint16 RamfuncsLoadSize;
+    ```
+
+5. 在 main.c 文件中的 main()函数开头部分添加语句 、
+
+    ```
     InitSysCtrl();
     memcpy(&RamfuncsRunStart, &RamfuncsLoadStart, (Uint32)&RamfuncsLoadSize);
-    InitFlash();
-	```
+    InitFlash();   
+    ```
 
 6. 编译下载，ccs 会提示 erasing flash sectors. 下载完成后，将 DSP 芯片断电后再上电，观察程序是否仍然还能运行。
 

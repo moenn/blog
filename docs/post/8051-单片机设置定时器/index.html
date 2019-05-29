@@ -85,33 +85,35 @@
 
 <p>我们了解到定时 1us ，需要计数 12 个脉冲(12M 晶振的情况下)。 那么定时 1ms ，需要计数  12000 个脉冲。
 首先要开启总中断使能和定时器0使能</p>
-<div class="highlight"><pre class="chroma"><code class="language-c" data-lang="c"><span class="cp">#include</span> <span class="cpf">&#34;stc12c5a60s2.h&#34;</span><span class="cp">
-</span><span class="cp">#define FOSC 12000000L
-</span><span class="cp"></span><span class="n">sbit</span> <span class="n">P2_0</span> <span class="o">=</span> <span class="n">P2</span><span class="o">^</span><span class="mi">0</span><span class="p">;</span>
+<div class="highlight" style="background: #ffffff"><pre style="line-height: 125%"><code class="language-c" data-lang="c"><span></span><span style="color: #4c8317">#include</span> <span style="color: #aaaaaa; font-style: italic">&quot;stc12c5a60s2.h&quot;</span><span style="color: #4c8317"></span>
+<span style="color: #4c8317">#define FOSC 12000000L</span>
+sbit P2_0 = P2^<span style="color: #009999">0</span>;
 
-<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span>
-<span class="p">{</span>
-    <span class="c1">// 开启总中断和定时器0中断
-</span><span class="c1"></span>    <span class="n">EA</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
-    <span class="n">ET0</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
-    <span class="c1">// 设置定时器0工作在16位定时器模式
-</span><span class="c1"></span>    <span class="n">TMOD</span> <span class="o">=</span> <span class="mh">0x01</span><span class="p">;</span>
-    <span class="c1">// 1ms 定时   
-</span><span class="c1"></span>    <span class="n">TH0</span> <span class="o">=</span> <span class="p">(</span><span class="mi">65536</span> <span class="o">-</span> <span class="n">FOSC</span><span class="o">/</span><span class="mi">12</span><span class="o">/</span><span class="mi">1000</span><span class="p">)</span><span class="o">/</span><span class="mi">256</span><span class="p">;</span>
-    <span class="n">TL0</span> <span class="o">=</span> <span class="p">(</span><span class="mi">65536</span> <span class="o">-</span> <span class="n">FOSC</span><span class="o">/</span><span class="mi">12</span><span class="o">/</span><span class="mi">1000</span><span class="p">)</span><span class="o">%</span><span class="mi">256</span><span class="p">;</span>
-    <span class="c1">// 定时器计时开始
-</span><span class="c1"></span>    <span class="n">TR0</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
-    <span class="k">while</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
-<span class="p">}</span>   
+<span style="color: #00aaaa">int</span> <span style="color: #00aa00">main</span>()
+{
+    <span style="color: #aaaaaa; font-style: italic">// 开启总中断和定时器0中断</span>
+    EA = <span style="color: #009999">1</span>;
+    ET0 = <span style="color: #009999">1</span>;
+    <span style="color: #aaaaaa; font-style: italic">// 设置定时器0工作在16位定时器模式</span>
+    TMOD = <span style="color: #009999">0x01</span>;
+    <span style="color: #aaaaaa; font-style: italic">// 1ms 定时   </span>
+    TH0 = (<span style="color: #009999">65536</span> - FOSC/<span style="color: #009999">12</span>/<span style="color: #009999">1000</span>)/<span style="color: #009999">256</span>;
+    TL0 = (<span style="color: #009999">65536</span> - FOSC/<span style="color: #009999">12</span>/<span style="color: #009999">1000</span>)%<span style="color: #009999">256</span>;
+    <span style="color: #aaaaaa; font-style: italic">// 定时器计时开始</span>
+    TR0 = <span style="color: #009999">1</span>;
+    <span style="color: #0000aa">while</span>(<span style="color: #009999">1</span>);
+}   
 
-<span class="kt">void</span> <span class="nf">Timer0_Rountine</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span> <span class="n">interrupt</span> <span class="mi">1</span>
-<span class="p">{</span>
-    <span class="c1">// 重装载定时器
-</span><span class="c1"></span>    <span class="n">TH0</span> <span class="o">=</span> <span class="p">(</span><span class="mi">65536</span> <span class="o">-</span> <span class="n">FOSC</span><span class="o">/</span><span class="mi">12</span><span class="o">/</span><span class="mi">1000</span><span class="p">)</span><span class="o">/</span><span class="mi">256</span><span class="p">;</span>
-    <span class="n">TL0</span> <span class="o">=</span> <span class="p">(</span><span class="mi">65536</span> <span class="o">-</span> <span class="n">FOSC</span><span class="o">/</span><span class="mi">12</span><span class="o">/</span><span class="mi">1000</span><span class="p">)</span><span class="o">%</span><span class="mi">256</span><span class="p">;</span>
-    <span class="c1">// 你要执行的任务，每1ms 执行一次
-</span><span class="c1"></span>    <span class="c1">// 任务代码
-</span><span class="c1"></span><span class="p">}</span></code></pre></div>
+<span style="color: #00aaaa">void</span> <span style="color: #00aa00">Timer0_Rountine</span>(<span style="color: #00aaaa">void</span>) interrupt <span style="color: #009999">1</span>
+{
+    <span style="color: #aaaaaa; font-style: italic">// 重装载定时器</span>
+    TH0 = (<span style="color: #009999">65536</span> - FOSC/<span style="color: #009999">12</span>/<span style="color: #009999">1000</span>)/<span style="color: #009999">256</span>;
+    TL0 = (<span style="color: #009999">65536</span> - FOSC/<span style="color: #009999">12</span>/<span style="color: #009999">1000</span>)%<span style="color: #009999">256</span>;
+    <span style="color: #aaaaaa; font-style: italic">// 你要执行的任务，每1ms 执行一次</span>
+    <span style="color: #aaaaaa; font-style: italic">// 任务代码</span>
+}
+</code></pre></div>
+
   </section>
 
   <section>

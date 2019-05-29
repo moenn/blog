@@ -112,58 +112,60 @@ HC-SR04 模块包含了超声波发射器、超声波接收器和控制电路，
 <h3 id="python-程序控制测距">python 程序控制测距</h3>
 
 <p>如果你理解了 HC-SR04 的工作过程，那么下面包含注释的程序对你应该很简单，就不一一解释了。</p>
-<div class="highlight"><pre class="chroma"><code class="language-python" data-lang="python"><span class="c1">#导入 GPIO库</span>
-<span class="kn">import</span> <span class="nn">RPi.GPIO</span> <span class="kn">as</span> <span class="nn">GPIO</span>
-<span class="kn">import</span> <span class="nn">time</span>
+<div class="highlight" style="background: #ffffff"><pre style="line-height: 125%"><code class="language-python" data-lang="python"><span></span><span style="color: #aaaaaa; font-style: italic">#导入 GPIO库</span>
+<span style="color: #0000aa">import</span> <span style="color: #00aaaa; text-decoration: underline">RPi.GPIO</span> <span style="color: #0000aa">as</span> <span style="color: #00aaaa; text-decoration: underline">GPIO</span>
+<span style="color: #0000aa">import</span> <span style="color: #00aaaa; text-decoration: underline">time</span>
  
-<span class="c1">#设置 GPIO 模式为 BCM</span>
-<span class="n">GPIO</span><span class="o">.</span><span class="n">setmode</span><span class="p">(</span><span class="n">GPIO</span><span class="o">.</span><span class="n">BCM</span><span class="p">)</span>
+<span style="color: #aaaaaa; font-style: italic">#设置 GPIO 模式为 BCM</span>
+GPIO.setmode(GPIO.BCM)
  
-<span class="c1">#定义 GPIO 引脚</span>
-<span class="n">GPIO_TRIGGER</span> <span class="o">=</span> <span class="mi">23</span>
-<span class="n">GPIO_ECHO</span> <span class="o">=</span> <span class="mi">24</span>
+<span style="color: #aaaaaa; font-style: italic">#定义 GPIO 引脚</span>
+GPIO_TRIGGER = <span style="color: #009999">23</span>
+GPIO_ECHO = <span style="color: #009999">24</span>
  
-<span class="c1">#设置 GPIO 的工作方式 (IN / OUT)</span>
-<span class="n">GPIO</span><span class="o">.</span><span class="n">setup</span><span class="p">(</span><span class="n">GPIO_TRIGGER</span><span class="p">,</span> <span class="n">GPIO</span><span class="o">.</span><span class="n">OUT</span><span class="p">)</span>
-<span class="n">GPIO</span><span class="o">.</span><span class="n">setup</span><span class="p">(</span><span class="n">GPIO_ECHO</span><span class="p">,</span> <span class="n">GPIO</span><span class="o">.</span><span class="n">IN</span><span class="p">)</span>
+<span style="color: #aaaaaa; font-style: italic">#设置 GPIO 的工作方式 (IN / OUT)</span>
+GPIO.setup(GPIO_TRIGGER, GPIO.OUT)
+GPIO.setup(GPIO_ECHO, GPIO.IN)
  
-<span class="k">def</span> <span class="nf">distance</span><span class="p">():</span>
-    <span class="c1"># 发送高电平信号到 Trig 引脚</span>
-    <span class="n">GPIO</span><span class="o">.</span><span class="n">output</span><span class="p">(</span><span class="n">GPIO_TRIGGER</span><span class="p">,</span> <span class="bp">True</span><span class="p">)</span>
+<span style="color: #0000aa">def</span> <span style="color: #00aa00">distance</span>():
+    <span style="color: #aaaaaa; font-style: italic"># 发送高电平信号到 Trig 引脚</span>
+    GPIO.output(GPIO_TRIGGER, <span style="color: #00aaaa">True</span>)
  
-    <span class="c1"># 持续 10 us </span>
-    <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">0.00001</span><span class="p">)</span>
-    <span class="n">GPIO</span><span class="o">.</span><span class="n">output</span><span class="p">(</span><span class="n">GPIO_TRIGGER</span><span class="p">,</span> <span class="bp">False</span><span class="p">)</span>
+    <span style="color: #aaaaaa; font-style: italic"># 持续 10 us </span>
+    time.sleep(<span style="color: #009999">0.00001</span>)
+    GPIO.output(GPIO_TRIGGER, <span style="color: #00aaaa">False</span>)
  
-    <span class="n">start_time</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
-    <span class="n">stop_time</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+    start_time = time.time()
+    stop_time = time.time()
  
-    <span class="c1"># 记录发送超声波的时刻1</span>
-    <span class="k">while</span> <span class="n">GPIO</span><span class="o">.</span><span class="nb">input</span><span class="p">(</span><span class="n">GPIO_ECHO</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
-        <span class="n">start_time</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+    <span style="color: #aaaaaa; font-style: italic"># 记录发送超声波的时刻1</span>
+    <span style="color: #0000aa">while</span> GPIO.input(GPIO_ECHO) == <span style="color: #009999">0</span>:
+        start_time = time.time()
  
-    <span class="c1"># 记录接收到返回超声波的时刻2</span>
-    <span class="k">while</span> <span class="n">GPIO</span><span class="o">.</span><span class="nb">input</span><span class="p">(</span><span class="n">GPIO_ECHO</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
-        <span class="n">stop_time</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+    <span style="color: #aaaaaa; font-style: italic"># 记录接收到返回超声波的时刻2</span>
+    <span style="color: #0000aa">while</span> GPIO.input(GPIO_ECHO) == <span style="color: #009999">1</span>:
+        stop_time = time.time()
  
-    <span class="c1"># 计算超声波的往返时间 = 时刻2 - 时刻1</span>
-    <span class="n">time_elapsed</span> <span class="o">=</span> <span class="n">stop_time</span> <span class="o">-</span> <span class="n">start_time</span>
-    <span class="c1"># 声波的速度为 343m/s， 转化为 34300cm/s。</span>
-    <span class="n">distance</span> <span class="o">=</span> <span class="p">(</span><span class="n">time_elapsed</span> <span class="o">*</span> <span class="mi">34300</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span>
+    <span style="color: #aaaaaa; font-style: italic"># 计算超声波的往返时间 = 时刻2 - 时刻1</span>
+    time_elapsed = stop_time - start_time
+    <span style="color: #aaaaaa; font-style: italic"># 声波的速度为 343m/s， 转化为 34300cm/s。</span>
+    distance = (time_elapsed * <span style="color: #009999">34300</span>) / <span style="color: #009999">2</span>
  
-    <span class="k">return</span> <span class="n">distance</span>
+    <span style="color: #0000aa">return</span> distance
  
-<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
-    <span class="k">try</span><span class="p">:</span>
-        <span class="k">while</span> <span class="bp">True</span><span class="p">:</span>
-            <span class="n">dist</span> <span class="o">=</span> <span class="n">distance</span><span class="p">()</span>
-            <span class="k">print</span><span class="p">(</span><span class="s2">&#34;Measured Distance = {:.2f} cm&#34;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">dist</span><span class="p">))</span>
-            <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span style="color: #0000aa">if</span> <span style="color: #aa0000">__name__</span> == <span style="color: #aa5500">&#39;__main__&#39;</span>:
+    <span style="color: #0000aa">try</span>:
+        <span style="color: #0000aa">while</span> <span style="color: #00aaaa">True</span>:
+            dist = distance()
+            <span style="color: #0000aa">print</span>(<span style="color: #aa5500">&quot;Measured Distance = {:.2f} cm&quot;</span>.format(dist))
+            time.sleep(<span style="color: #009999">1</span>)
  
-        <span class="c1"># Reset by pressing CTRL + C</span>
-    <span class="k">except</span> <span class="ne">KeyboardInterrupt</span><span class="p">:</span>
-        <span class="k">print</span><span class="p">(</span><span class="s2">&#34;Measurement stopped by User&#34;</span><span class="p">)</span>
-        <span class="n">GPIO</span><span class="o">.</span><span class="n">cleanup</span><span class="p">()</span></code></pre></div>
+        <span style="color: #aaaaaa; font-style: italic"># Reset by pressing CTRL + C</span>
+    <span style="color: #0000aa">except</span> KeyboardInterrupt:
+        <span style="color: #0000aa">print</span>(<span style="color: #aa5500">&quot;Measurement stopped by User&quot;</span>)
+        GPIO.cleanup()
+</code></pre></div>
+
 <p>运行结果:</p>
 
 <p><img src="https://i.loli.net/2018/12/04/5c05597c85566.png" alt="Snipaste_2018-12-04_00-24-20.png" /></p>

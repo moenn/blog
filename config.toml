@@ -7,8 +7,9 @@ theme = "hugo-primer"
 hasCJKLanguage = true
 summaryLength = 0
 # Code pen
-pygmentsCodeFences = true
-pygmentsUseClasses = true
+pygmentsUseClassic       = true
+pygmentsCodeFences       = true
+pygmentsStyle            = "autumn"
 
 
 [frontmatter]
