@@ -50,5 +50,6 @@ date:   2019-05-29
 	![erasing_flash_sectors.png](https://i.loli.net/2019/05/29/5cee4a38021d111789.png)
 	![Loading_program.png](https://i.loli.net/2019/05/29/5cee4a3841a9647875.png)
 7. 将 DSP 芯片断电后再上电，观察程序是否仍然还能运行。
+
 ###### 注意事项
 - 如果 dsp 使用 usb 扩展坞供电，可能无法正常从 flash 启动。
