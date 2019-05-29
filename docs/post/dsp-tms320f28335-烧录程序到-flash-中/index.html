@@ -147,26 +147,20 @@ type="image/x-icon"/>
 
 <li><p>在 main.c 文件中添加函数声明</p>
 
-<pre><code class="language-c">extern Uint16 RamfuncsLoadStart;
+<pre><code>extern Uint16 RamfuncsLoadStart;
 extern Uint16 RamfuncsLoadEnd;
 extern Uint16 RamfuncsRunStart;
 extern Uint16 RamfuncsLoadSize;
-</code></pre>
+</code></pre></li>
 
-<ol>
-<li>在 main.c 文件中的 main()函数开头部分添加语句
-<code>c
-InitSysCtrl();
+<li><p>在 main.c 文件中的 main()函数开头部分添加语句</p>
+
+<pre><code>InitSysCtrl();
 memcpy(&amp;RamfuncsRunStart, &amp;RamfuncsLoadStart, (Uint32)&amp;RamfuncsLoadSize);
 InitFlash();
-</code></li>
-</ol></li>
+</code></pre></li>
 
-<li><p>编译下载，界面如下所示
-<img src="https://i.loli.net/2019/05/29/5cee4a38021d111789.png" alt="erasing_flash_sectors.png" />
-<img src="https://i.loli.net/2019/05/29/5cee4a3841a9647875.png" alt="Loading_program.png" /></p></li>
-
-<li><p>将 DSP 芯片断电后再上电，观察程序是否仍然还能运行。</p></li>
+<li><p>编译下载，ccs 会提示 erasing flash sectors. 下载完成后，将 DSP 芯片断电后再上电，观察程序是否仍然还能运行。</p></li>
 </ol>
 
 <h6 id="注意事项">注意事项</h6>

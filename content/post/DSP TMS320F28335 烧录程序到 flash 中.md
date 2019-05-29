@@ -32,7 +32,7 @@ date:   2019-05-29
 	| DSP2833x_MemCopy.c           | C:\ti\c2000\C2000Ware_1_00_06_00\device_support\f2833x\common\source |
 
 4. 在 main.c 文件中添加函数声明
-	```c
+	```
 	extern Uint16 RamfuncsLoadStart;
 	extern Uint16 RamfuncsLoadEnd;
 	extern Uint16 RamfuncsRunStart;
@@ -40,16 +40,13 @@ date:   2019-05-29
 	```
 
 5. 在 main.c 文件中的 main()函数开头部分添加语句
-	```c
+	```
     InitSysCtrl();
     memcpy(&RamfuncsRunStart, &RamfuncsLoadStart, (Uint32)&RamfuncsLoadSize);
     InitFlash();
 	```
 
-6. 编译下载，界面如下所示
-	![erasing_flash_sectors.png](https://i.loli.net/2019/05/29/5cee4a38021d111789.png)
-	![Loading_program.png](https://i.loli.net/2019/05/29/5cee4a3841a9647875.png)
-7. 将 DSP 芯片断电后再上电，观察程序是否仍然还能运行。
+6. 编译下载，ccs 会提示 erasing flash sectors. 下载完成后，将 DSP 芯片断电后再上电，观察程序是否仍然还能运行。
 
 ###### 注意事项
 - 如果 dsp 使用 usb 扩展坞供电，可能无法正常从 flash 启动。
