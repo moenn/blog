@@ -6,10 +6,24 @@
     <description>Recent content on 黄金之心号|博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Tue, 21 May 2019 02:51:43 +0800</lastBuildDate>
+    <lastBuildDate>Wed, 29 May 2019 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://mengsheng.me/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>DSP TMS320F28335 烧录程序到 flash</title>
+      <link>https://mengsheng.me/post/dsp-tms320f28335-%E7%83%A7%E5%BD%95%E7%A8%8B%E5%BA%8F%E5%88%B0-flash-%E4%B8%AD/</link>
+      <pubDate>Wed, 29 May 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://mengsheng.me/post/dsp-tms320f28335-%E7%83%A7%E5%BD%95%E7%A8%8B%E5%BA%8F%E5%88%B0-flash-%E4%B8%AD/</guid>
+      <description>准备 当开发 dsp 程序的时候，一般是烧录到 RAM 中，这样下载程序的速度快，不过 dsp 掉电后程序就会消失。当开发完成后，需要将程序固化到 FLASH 中，掉电后程序仍存在 dsp 中。
+烧录之前确保你可以用仿真器下载程序到 RAM 中运行，即电脑、仿真器和dsp芯片的连接是无误的。
+这篇文章以 TMS320F28335 芯片为例，参考的是 c2000ware 软件中的 Example_28335_Flash 示例程序。 如果你使用的是其他芯片，在以下步骤中适当替换即可。
+烧录步骤  选择 Boot Mode 为 Jump to Flash. 根据 28335 数据手册的 6.1.9一节，向下表中的 4 个 GPIO 口输入高电平即可。
+   MODE GPIO87/XA15 GPIO86/XA14 GPIO85/XA13 GPIO84/XA12 MODE     F 1 1 1 1 Jump to Flash    可以使用如下的电路图。
+ 在 28335_RAM_Lnk.cmd 文件上右键，勾选为 exclude from Build。</description>
+    </item>
     
     <item>
       <title>220v交流转12v直流 - 线性稳压电源</title>
@@ -105,20 +119,6 @@ HC-SR04 与树莓派的接线 树莓派 GPIO 引脚图 接线图  电源引脚 V
 根据需要下载相应的 raspbian 系统，然后下载并安装刻录软件 etcher 。  格式化。将插有内存卡的读卡器连接电脑，格式化内存卡。 刻录。 打开刻录软件 etcher.  选择 raspbian.zip 文件 选择内存卡 点击 Flash 开始刻录。
    至此系统安装完成，将内存卡插入树莓派后，通电开机即可 🍞。
 （可选）开启 ssh 功能，自 Raspbian 在 2016年11月发布更新后，系统的 ssh 功能是默认关闭的。要开启 ssh 也很简单，只需在 SD 卡的根目录新建一个名为 ssh （无后缀）的空白文件，然后将内存卡插入树莓派，开机后 raspbian 会自动开启 ssh 功能。</description>
-    </item>
-    
-    <item>
-      <title></title>
-      <link>https://mengsheng.me/post/dsp-tms320f28335-%E7%83%A7%E5%BD%95%E7%A8%8B%E5%BA%8F%E5%88%B0-flash-%E4%B8%AD/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://mengsheng.me/post/dsp-tms320f28335-%E7%83%A7%E5%BD%95%E7%A8%8B%E5%BA%8F%E5%88%B0-flash-%E4%B8%AD/</guid>
-      <description>准备 当开发 dsp 程序的时候，一般是烧录到 RAM 中，这样下载程序的速度快，不过 dsp 掉电后程序就会消失。当开发完成后，需要将程序固化到 FLASH 中，掉电后程序仍存在 dsp 中。
-烧录之前确保你可以用仿真器下载程序到 RAM 中运行，即电脑、仿真器和dsp芯片的连接是无误的。
-这篇文章以 TMS320F28335 芯片为例，参考的是 c2000ware 软件中的 Example_28335_Flash 示例程序。 如果你使用的是其他芯片，在以下步骤中适当替换即可。
-烧录步骤  选择 Boot Mode 为 Jump to Flash. 根据 28335 数据手册的 6.1.9一节，向下表中的 4 个 GPIO 口输入高电平即可。
-   MODE GPIO87/XA15 GPIO86/XA14 GPIO85/XA13 GPIO84/XA12 MODE     F 1 1 1 1 Jump to Flash    可以使用如下的电路图。
- 在 28335_RAM_Lnk.cmd 文件上右键，勾选为 exclude from Build。</description>
     </item>
     
     <item>
