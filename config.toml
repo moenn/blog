@@ -1,5 +1,22 @@
 baseURL = "https://mengsheng.me/"
-languageCode = "en"
+languageCode = "zh-CN"
 title = "黄金之心号|博客"
 publishDir = "docs"
-theme = "er"
+theme = "hugo-primer"
+
+hasCJKLanguage = true
+summaryLength = 0
+# Code pen
+pygmentsCodeFences = true
+pygmentsUseClasses = true
+
+
+[frontmatter]
+# update sitemap.xml's lastmod datetime by file change time, instead of git.
+lastmod = ["lastmod", ":fileModTime", ":default"]
+
+[params]
+description = "Describe what your web page is about"
+
+
+

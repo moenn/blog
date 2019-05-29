@@ -1,74 +1,79 @@
-<!doctype html>
-<html lang="en">
-<head><meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<meta content='text/html; charset=utf-8' http-equiv='content-type' />
+<!DOCTYPE html>
+<html>
+  <head>
+    
+    
+    
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>
+      
+  树莓派入门(一)安装系统 &ndash; 黄金之心号|博客
 
-  <title>树莓派入门(一)安装系统 - 黄金之心号|博客</title>
-  <meta content='树莓派入门(一)安装系统 - 黄金之心号|博客' property='title' />
-  <meta content='树莓派入门(一)安装系统 - 黄金之心号|博客' property='og:title' />
+    </title>
+    
+    
+    <meta name="description" property="og:description" content="|Describe what your web page is about">
+    
 
-
-<meta property="og:description" content="需要的工具  至少 8 GB 的内存卡 &#43; 读卡器 &#43; PC raspbian 系统映像文件(zip格式) : Raspbian 刻录软件 : etcher  安装过程  raspbian 系统有两个可选:  ‘RASPBIAN STRETCH WITH DESKTOP’，带桌面环境， ‘RASPBIAN STRETCH LITE’，不带桌面环境，只能通过命令行控制。
-根据需要下载相应的 raspbian 系统，然后下载并安装刻录软件 etcher 。  格式化。将插有内存卡的读卡器连接电脑，格式化内存卡。 刻录。 打开刻录软件 etcher.  选择 raspbian.zip 文件 选择内存卡 点击 Flash 开始刻录。
-   至此系统安装完成，将内存卡插入树莓派后，通电开机即可 🍞。
-（可选）开启 ssh 功能，自 Raspbian 在 2016年11月发布更新后，系统的 ssh 功能是默认关闭的。要开启 ssh 也很简单，只需在 SD 卡的根目录新建一个名为 ssh （无后缀）的空白文件，然后将内存卡插入树莓派，开机后 raspbian 会自动开启 ssh 功能。" />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="https://mengsheng.me/post/%E6%A0%91%E8%8E%93%E6%B4%BE%E5%85%A5%E9%97%A8%E4%B8%80%E5%AE%89%E8%A3%85%E7%B3%BB%E7%BB%9F/" />
-
-
-<meta property="article:published_time" content="2018-09-21T21:33:43&#43;08:00"/>
-
-<meta property="article:modified_time" content="2018-09-21T21:33:43&#43;08:00"/>
-
-
-
+    <meta name="apple-mobile-web-app-title" content="黄金之心号|博客">
+    
+    
+    
+    
 
 
+    <link rel="stylesheet" href="/assets/syntax.css">
+    <link rel="stylesheet" href="/assets/primer-build.css">
+    <link rel="stylesheet" href="/assets/style.css">
+  </head>
 
 
+  <body class="bg-gray">
+    <div id="holy" class="container-lg bg-white h-100">
 
-<meta name="generator" content="Hugo 0.55.6" />
+      <div id="header" class="px-1 bg-white">
+        <nav class="UnderlineNav UnderlineNav--right px-2">
+  <a class="UnderlineNav-actions muted-link h2" href="https://mengsheng.me/">
+    黄金之心号|博客
+  </a>
 
-<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600" rel="stylesheet">
-<style type="text/css">/*https://coolors.co/afd5aa-f0f2ef-a69f98-3d3d3d-8c6057*/
-:root {
-  --main-color: #8C6056; 
-  --secondary-color: #AFD5AA;
-  --logo-text-color: #fff;
-  --body-text-color: #3d3d3d;
-  --heading-text-color: #383838;
-  --background-color: #fff;
-}</style>
-<link href='/css/tachyons.min.css' rel="stylesheet">
-<link href='/css/styles.css' rel="stylesheet">
-
-
-<link rel="icon" 
- 
-  href='/favicon.ico'
-
-type="image/x-icon"/>
-
-<link href='/feed.xml' rel="alternate" type="application/atom+xml" title="黄金之心号|博客" />
-</head>
-<body class="global-font">
-  <nav class=" justify-between border-box pa3 pl3-l pr2-l mt1 mt0-ns" id="navbar">
-  <div class="flex">
-    <a class="f4 fw6 ttu no-underline dim bg-main-color pv1 ph2 br2" id="site-title" href='/' title="Home">黄金之心号|博客</a>
-  </div>
+  
   
 </nav>
+
+      </div>
+
+      <div role="main" id="main" class="holy-main markdown-body px-4 bg-white">
+        
+
+<div class="Subhead">
+  <div class="Subhead-heading">
+    <div class="h1 mt-3 mb-1">树莓派入门(一)安装系统</div>
+  </div>
+  <div class="Subhead-description">
+    
+
+
+
+
+
+
+    
+    <div class="float-md-right">
+      <span title="Lastmod: 2019-05-21. Published at: 2018-09-21.">
+        
+          Lastmod: 2019-05-21
+        
+      </span>
+    </div>
+    
+  </div>
+</div>
+<article>
   
-<main class="center mv4 content-width ph3">
-  <div class="f3 fw6 heading-color heading-font post-title">树莓派入门(一)安装系统</div>
-  <p class="silver f6 mt1 mb4 post-meta">
-    <time>21 Sep 2018</time> 
+  <section class="pb-6 mb-3 border-bottom">
     
-    
-    
-  </p>
-  <div class="lh-copy post-content">
 
 <h3 id="需要的工具">需要的工具</h3>
 
@@ -107,102 +112,67 @@ type="image/x-icon"/>
 <p>（可选）<strong>开启 ssh 功能</strong>，自 Raspbian 在 2016年11月发布更新后，系统的 ssh 功能是默认关闭的。要开启 ssh 也很简单，只需在 SD 卡的根目录新建一个名为 ssh （无后缀）的空白文件，然后将内存卡插入树莓派，开机后 raspbian 会自动开启 ssh 功能。</p>
 
 <p><img src="https://s1.imgsha.com/2018/09/21/7SZqGy.png" alt="开启ssh" /></p>
-</div>
-</main>
- 
 
+  </section>
 
-
-
-
-
-<div class="tl fixed list-pages lh-copy" id="contents-list"></div>
-
-
-
-<div class="pagination tc tr-l db fixed-l bottom-2-l right-2-l mb3 mb0-l">
-  
-<a id="scroll-to-top" class="f6 o-0 link br2 ph2 pv1 mb1 bg-main-color pointer" onclick="topFunction()" style="color: #fff; visibility: hidden; display: none; transition: opacity .5s, visibility .5s;" title="back to top">back to top</a>
-<br>
-  <p class="mb0 mt2">
-  <a href="https://mengsheng.me/post/8051-%E5%8D%95%E7%89%87%E6%9C%BA%E8%AE%BE%E7%BD%AE%E5%AE%9A%E6%97%B6%E5%99%A8/">prev post</a>
-  <a href="https://mengsheng.me/post/%E6%A0%91%E8%8E%93%E6%B4%BE%E5%85%A5%E9%97%A8%E4%BA%8Cssh/">next post</a>
-  </p>
-</div>
-
-  <footer class="content-width mt0 mt5-l mb4 f6 center ph3 gray tc tl-l">
-  <hr class="dn db-l ml0-l gray w3"><br>
-  Powered by <a href="https://gohugo.io/" target="_blank" class="link gray dim">Hugo</a>, based on the <a href="https://github.com/lingxz/er" target="_blank" class="link gray dim">Er</a> theme. <br>
-  
-</footer>
-  
-
-
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.min.js"></script>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.css">
-<style>.is-active-link::before { background-color: var(--secondary-color); }</style>
-
-
-
-
-<script type="text/javascript">
-var prevScrollpos = window.pageYOffset;
-window.onscroll = function() {
-  var currentScrollPos = window.pageYOffset;
-
-  
-  if (document.getElementById("tag-cloud") !== null) { 
-    if (prevScrollpos > currentScrollPos) { 
-      document.getElementById("tag-cloud").style.visibility = "visible";
-      document.getElementById("tag-cloud").style.opacity = "1";
-    } else {
-      document.getElementById("tag-cloud").style.visibility = "hidden";
-      document.getElementById("tag-cloud").style.opacity = "0";
-    }
-  }
-  
-
-  
-  if (document.body.scrollTop > 1000 || document.documentElement.scrollTop > 1000) {
-      document.getElementById("scroll-to-top").style.display = "inline";
-      document.getElementById("scroll-to-top").style.visibility = "visible";
-      document.getElementById("scroll-to-top").style.opacity = "1";
-  } else {
-      document.getElementById("scroll-to-top").style.visibility = "hidden";
-      document.getElementById("scroll-to-top").style.opacity = "0";
-  }
-  
-  prevScrollpos = currentScrollPos;
-}
-
-
-function topFunction() {
-  document.body.scrollTop = 0; 
-  document.documentElement.scrollTop = 0; 
-}
-
-
-
-
-
-
-if (document.getElementById("contents-list") !== null && document.getElementsByClassName("post-content").length !== 0) { 
-  tocbot.init({
+  <section>
     
-    tocSelector: '#contents-list',
+      
     
-    contentSelector: '.post-content',
+  </section>
+</article>
+
+      </div>
+
+      <div id="side" class="pr-1 bg-white">
+        <aside class="pr-3">
+          
+  
+    <div id="toc" class="Box Box--blue mb-3">
+      <b>树莓派入门(一)安装系统</b>
+      <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li>
+<ul>
+<li><a href="#需要的工具">需要的工具</a></li>
+<li><a href="#安装过程">安装过程</a></li>
+</ul></li>
+</ul></li>
+</ul>
+</nav>
+    </div>
+  
+
+  
+    <div>
+      
+    </div>
+  
+
+        </aside>
+      </div>
+
+      <div id="footer" class="pt-2 pb-3 bg-white text-center">
+        
+
+  <span class="text-small text-gray">
     
-    headingSelector: 'h1, h2, h3',
-  });
-}
+
+    Powered by the
+    <a href="https://github.com/qqhann/hugo-primer" class="link-gray-dark">Hugo-Primer</a> theme for
+    <a href="https://gohugo.io" class="link-gray-dark">Hugo</a>.
+  </span>
 
 
-</script>
+      </div>
+    </div>
 
 
-
-
-</body>
+    
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({ tex2jax: { inlineMath: [['$','$'], ['\\(','\\)']] } });</script>
+  </body>
 </html>

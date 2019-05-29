@@ -1,76 +1,79 @@
-<!doctype html>
-<html lang="en">
-<head><meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<meta content='text/html; charset=utf-8' http-equiv='content-type' />
+<!DOCTYPE html>
+<html>
+  <head>
+    
+    
+    
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>
+      
+  DSP TMS320F28335 烧录程序到 flash &ndash; 黄金之心号|博客
 
-  <title>DSP TMS320F28335 烧录程序到 flash - 黄金之心号|博客</title>
-  <meta content='DSP TMS320F28335 烧录程序到 flash - 黄金之心号|博客' property='title' />
-  <meta content='DSP TMS320F28335 烧录程序到 flash - 黄金之心号|博客' property='og:title' />
+    </title>
+    
+    
+    <meta name="description" property="og:description" content="|Describe what your web page is about">
+    
 
-
-<meta property="og:description" content="准备 当开发 dsp 程序的时候，一般是烧录到 RAM 中，这样下载程序的速度快，不过 dsp 掉电后程序就会消失。当开发完成后，需要将程序固化到 FLASH 中，掉电后程序仍存在 dsp 中。
-烧录之前确保你可以用仿真器下载程序到 RAM 中运行，即电脑、仿真器和dsp芯片的连接是无误的。
-这篇文章以 TMS320F28335 芯片为例，参考的是 c2000ware 软件中的 Example_28335_Flash 示例程序。 如果你使用的是其他芯片，在以下步骤中适当替换即可。
-烧录步骤  选择 Boot Mode 为 Jump to Flash. 根据 28335 数据手册的 6.1.9一节，向下表中的 4 个 GPIO 口输入高电平即可。
-   MODE GPIO87/XA15 GPIO86/XA14 GPIO85/XA13 GPIO84/XA12 MODE     F 1 1 1 1 Jump to Flash    可以使用如下的电路图。
- 在 28335_RAM_Lnk.cmd 文件上右键，勾选为 exclude from Build。" />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="https://mengsheng.me/post/dsp-tms320f28335-%E7%83%A7%E5%BD%95%E7%A8%8B%E5%BA%8F%E5%88%B0-flash-%E4%B8%AD/" />
-
-
-<meta property="article:published_time" content="2019-05-29T00:00:00&#43;00:00"/>
-
-<meta property="article:modified_time" content="2019-05-29T00:00:00&#43;00:00"/>
-
+    <meta name="apple-mobile-web-app-title" content="黄金之心号|博客">
+    
+    
+    
+    
 
 
+    <link rel="stylesheet" href="/assets/syntax.css">
+    <link rel="stylesheet" href="/assets/primer-build.css">
+    <link rel="stylesheet" href="/assets/style.css">
+  </head>
 
 
+  <body class="bg-gray">
+    <div id="holy" class="container-lg bg-white h-100">
 
+      <div id="header" class="px-1 bg-white">
+        <nav class="UnderlineNav UnderlineNav--right px-2">
+  <a class="UnderlineNav-actions muted-link h2" href="https://mengsheng.me/">
+    黄金之心号|博客
+  </a>
 
-
-<meta name="generator" content="Hugo 0.55.6" />
-
-<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600" rel="stylesheet">
-<style type="text/css">/*https://coolors.co/afd5aa-f0f2ef-a69f98-3d3d3d-8c6057*/
-:root {
-  --main-color: #8C6056; 
-  --secondary-color: #AFD5AA;
-  --logo-text-color: #fff;
-  --body-text-color: #3d3d3d;
-  --heading-text-color: #383838;
-  --background-color: #fff;
-}</style>
-<link href='/css/tachyons.min.css' rel="stylesheet">
-<link href='/css/styles.css' rel="stylesheet">
-
-
-<link rel="icon" 
- 
-  href='/favicon.ico'
-
-type="image/x-icon"/>
-
-<link href='/feed.xml' rel="alternate" type="application/atom+xml" title="黄金之心号|博客" />
-</head>
-<body class="global-font">
-  <nav class=" justify-between border-box pa3 pl3-l pr2-l mt1 mt0-ns" id="navbar">
-  <div class="flex">
-    <a class="f4 fw6 ttu no-underline dim bg-main-color pv1 ph2 br2" id="site-title" href='/' title="Home">黄金之心号|博客</a>
-  </div>
+  
   
 </nav>
+
+      </div>
+
+      <div role="main" id="main" class="holy-main markdown-body px-4 bg-white">
+        
+
+<div class="Subhead">
+  <div class="Subhead-heading">
+    <div class="h1 mt-3 mb-1">DSP TMS320F28335 烧录程序到 flash</div>
+  </div>
+  <div class="Subhead-description">
+    
+
+
+
+
+
+
+    
+    <div class="float-md-right">
+      <span title="Lastmod: 2019-05-29. Published at: 2019-05-29.">
+        
+          Lastmod: 2019-05-29
+        
+      </span>
+    </div>
+    
+  </div>
+</div>
+<article>
   
-<main class="center mv4 content-width ph3">
-  <div class="f3 fw6 heading-color heading-font post-title">DSP TMS320F28335 烧录程序到 flash</div>
-  <p class="silver f6 mt1 mb4 post-meta">
-    <time>29 May 2019</time> 
+  <section class="pb-6 mb-3 border-bottom">
     
-    
-    
-  </p>
-  <div class="lh-copy post-content">
 
 <h3 id="准备">准备</h3>
 
@@ -168,102 +171,76 @@ InitFlash();
 <ul>
 <li>如果 dsp 使用 usb 扩展坞供电，可能无法正常从 flash 启动。</li>
 </ul>
-</div>
-</main>
- 
 
+  </section>
 
-
-
-
-
-<div class="tl fixed list-pages lh-copy" id="contents-list"></div>
-
-
-
-<div class="pagination tc tr-l db fixed-l bottom-2-l right-2-l mb3 mb0-l">
-  
-<a id="scroll-to-top" class="f6 o-0 link br2 ph2 pv1 mb1 bg-main-color pointer" onclick="topFunction()" style="color: #fff; visibility: hidden; display: none; transition: opacity .5s, visibility .5s;" title="back to top">back to top</a>
-<br>
-  <p class="mb0 mt2">
-  <a href="https://mengsheng.me/post/220v%E4%BA%A4%E6%B5%81%E8%BD%AC12v%E7%9B%B4%E6%B5%81-%E7%BA%BF%E6%80%A7%E7%A8%B3%E5%8E%8B%E7%94%B5%E6%BA%90/">prev post</a>
-  
-  </p>
-</div>
-
-  <footer class="content-width mt0 mt5-l mb4 f6 center ph3 gray tc tl-l">
-  <hr class="dn db-l ml0-l gray w3"><br>
-  Powered by <a href="https://gohugo.io/" target="_blank" class="link gray dim">Hugo</a>, based on the <a href="https://github.com/lingxz/er" target="_blank" class="link gray dim">Er</a> theme. <br>
-  
-</footer>
-  
-
-
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.min.js"></script>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.css">
-<style>.is-active-link::before { background-color: var(--secondary-color); }</style>
-
-
-
-
-<script type="text/javascript">
-var prevScrollpos = window.pageYOffset;
-window.onscroll = function() {
-  var currentScrollPos = window.pageYOffset;
-
-  
-  if (document.getElementById("tag-cloud") !== null) { 
-    if (prevScrollpos > currentScrollPos) { 
-      document.getElementById("tag-cloud").style.visibility = "visible";
-      document.getElementById("tag-cloud").style.opacity = "1";
-    } else {
-      document.getElementById("tag-cloud").style.visibility = "hidden";
-      document.getElementById("tag-cloud").style.opacity = "0";
-    }
-  }
-  
-
-  
-  if (document.body.scrollTop > 1000 || document.documentElement.scrollTop > 1000) {
-      document.getElementById("scroll-to-top").style.display = "inline";
-      document.getElementById("scroll-to-top").style.visibility = "visible";
-      document.getElementById("scroll-to-top").style.opacity = "1";
-  } else {
-      document.getElementById("scroll-to-top").style.visibility = "hidden";
-      document.getElementById("scroll-to-top").style.opacity = "0";
-  }
-  
-  prevScrollpos = currentScrollPos;
-}
-
-
-function topFunction() {
-  document.body.scrollTop = 0; 
-  document.documentElement.scrollTop = 0; 
-}
-
-
-
-
-
-
-if (document.getElementById("contents-list") !== null && document.getElementsByClassName("post-content").length !== 0) { 
-  tocbot.init({
+  <section>
     
-    tocSelector: '#contents-list',
+      
     
-    contentSelector: '.post-content',
+  </section>
+</article>
+
+      </div>
+
+      <div id="side" class="pr-1 bg-white">
+        <aside class="pr-3">
+          
+  
+    <div id="toc" class="Box Box--blue mb-3">
+      <b>DSP TMS320F28335 烧录程序到 flash</b>
+      <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li>
+<ul>
+<li><a href="#准备">准备</a></li>
+<li><a href="#烧录步骤">烧录步骤</a>
+<ul>
+<li>
+<ul>
+<li>
+<ul>
+<li><a href="#注意事项">注意事项</a></li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ul>
+</nav>
+    </div>
+  
+
+  
+    <div>
+      
+    </div>
+  
+
+        </aside>
+      </div>
+
+      <div id="footer" class="pt-2 pb-3 bg-white text-center">
+        
+
+  <span class="text-small text-gray">
     
-    headingSelector: 'h1, h2, h3',
-  });
-}
+
+    Powered by the
+    <a href="https://github.com/qqhann/hugo-primer" class="link-gray-dark">Hugo-Primer</a> theme for
+    <a href="https://gohugo.io" class="link-gray-dark">Hugo</a>.
+  </span>
 
 
-</script>
+      </div>
+    </div>
 
 
-
-
-</body>
+    
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({ tex2jax: { inlineMath: [['$','$'], ['\\(','\\)']] } });</script>
+  </body>
 </html>

@@ -1,93 +1,79 @@
-<!doctype html>
-<html lang="en">
-<head><meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<meta content='text/html; charset=utf-8' http-equiv='content-type' />
+<!DOCTYPE html>
+<html>
+  <head>
+    
+    
+    
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>
+      
+  centos 安装 python3 &ndash; 黄金之心号|博客
 
-  <title>centos 安装 python3 - 黄金之心号|博客</title>
-  <meta content='centos 安装 python3 - 黄金之心号|博客' property='title' />
-  <meta content='centos 安装 python3 - 黄金之心号|博客' property='og:title' />
+    </title>
+    
+    
+    <meta name="description" property="og:description" content="|Describe what your web page is about">
+    
 
-
-<meta property="og:description" content="环境: centos 7.5
-从源代码安装 python3 编译python需要 gcc 编译器、ziplib 等库文件，使用下面命令安装这些预先条件
-yum install gcc openssl-devel bzip2-devel libffi-devel zlib-devel sqlite-devel
-下载 python 源代码
-wget https://www.python.org/ftp/python/3.7.2/Python-3.7.2.tgz
-解压
-tar -xzvf Python-3.7.2.tgz
-进入解压目录
-cd Python-3.7.2
-编译，其中 &ndash;prefix 选项可以将 python3 安装到该目录
-./configure --prefix=/usr/local/python3
-安装
-make &amp;&amp; make install
-添加python3 的符号链接
-ln -s /usr/local/python3/bin/python3 /usr/local/bin/python3
-查看是否安装成功
-python3 -V 安装pip3 下载 get-pip.py 源文件
-curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
-调用 python3 安装
-python3 get-pip.py
-查看 pip3 是否已下载
-ls /usr/local/python3/bin/pip3
-如果上面的文件存在的话，创建它的软连接到 /usr/local/bin" />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="https://mengsheng.me/post/centos-%E5%AE%89%E8%A3%85-python3/" />
+    <meta name="apple-mobile-web-app-title" content="黄金之心号|博客">
+    
+    
+    
+    
 
 
-<meta property="article:published_time" content="2019-03-25T23:28:43&#43;08:00"/>
-
-<meta property="article:modified_time" content="2019-03-25T23:28:43&#43;08:00"/>
-
-
-
+    <link rel="stylesheet" href="/assets/syntax.css">
+    <link rel="stylesheet" href="/assets/primer-build.css">
+    <link rel="stylesheet" href="/assets/style.css">
+  </head>
 
 
+  <body class="bg-gray">
+    <div id="holy" class="container-lg bg-white h-100">
 
+      <div id="header" class="px-1 bg-white">
+        <nav class="UnderlineNav UnderlineNav--right px-2">
+  <a class="UnderlineNav-actions muted-link h2" href="https://mengsheng.me/">
+    黄金之心号|博客
+  </a>
 
-
-<meta name="generator" content="Hugo 0.55.6" />
-
-<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600" rel="stylesheet">
-<style type="text/css">/*https://coolors.co/afd5aa-f0f2ef-a69f98-3d3d3d-8c6057*/
-:root {
-  --main-color: #8C6056; 
-  --secondary-color: #AFD5AA;
-  --logo-text-color: #fff;
-  --body-text-color: #3d3d3d;
-  --heading-text-color: #383838;
-  --background-color: #fff;
-}</style>
-<link href='/css/tachyons.min.css' rel="stylesheet">
-<link href='/css/styles.css' rel="stylesheet">
-
-
-<link rel="icon" 
- 
-  href='/favicon.ico'
-
-type="image/x-icon"/>
-
-<link href='/feed.xml' rel="alternate" type="application/atom+xml" title="黄金之心号|博客" />
-</head>
-<body class="global-font">
-  <nav class=" justify-between border-box pa3 pl3-l pr2-l mt1 mt0-ns" id="navbar">
-  <div class="flex">
-    <a class="f4 fw6 ttu no-underline dim bg-main-color pv1 ph2 br2" id="site-title" href='/' title="Home">黄金之心号|博客</a>
-  </div>
+  
   
 </nav>
+
+      </div>
+
+      <div role="main" id="main" class="holy-main markdown-body px-4 bg-white">
+        
+
+<div class="Subhead">
+  <div class="Subhead-heading">
+    <div class="h1 mt-3 mb-1">centos 安装 python3</div>
+  </div>
+  <div class="Subhead-description">
+    
+
+
+
+
+
+
+    
+    <div class="float-md-right">
+      <span title="Lastmod: 2019-05-21. Published at: 2019-03-25.">
+        
+          Lastmod: 2019-05-21
+        
+      </span>
+    </div>
+    
+  </div>
+</div>
+<article>
   
-<main class="center mv4 content-width ph3">
-  <div class="f3 fw6 heading-color heading-font post-title">centos 安装 python3</div>
-  <p class="silver f6 mt1 mb4 post-meta">
-    <time>25 Mar 2019</time> 
+  <section class="pb-6 mb-3 border-bottom">
     
-    
-    
-  </p>
-  <div class="lh-copy post-content">
 
 <p>环境: centos 7.5</p>
 
@@ -134,102 +120,84 @@ type="image/x-icon"/>
 
 <p><a href="https://tecadmin.net/install-python-3-7-on-centos/">How to Install Python 3.7.2 on CentOS/RHEL <sup>7</sup>&frasl;<sub>6</sub> &amp; Fedora 29-25</a><br />
 <a href="https://ehlxr.me/2017/01/07/CentOS-7-%E5%AE%89%E8%A3%85-Python3%E3%80%81pip3/">CentOS 7 安装Python3、pip3</a></p>
-</div>
-</main>
- 
 
+  </section>
 
-
-
-
-
-<div class="tl fixed list-pages lh-copy" id="contents-list"></div>
-
-
-
-<div class="pagination tc tr-l db fixed-l bottom-2-l right-2-l mb3 mb0-l">
-  
-<a id="scroll-to-top" class="f6 o-0 link br2 ph2 pv1 mb1 bg-main-color pointer" onclick="topFunction()" style="color: #fff; visibility: hidden; display: none; transition: opacity .5s, visibility .5s;" title="back to top">back to top</a>
-<br>
-  <p class="mb0 mt2">
-  <a href="https://mengsheng.me/post/%E6%A0%91%E8%8E%93%E6%B4%BE-&#43;-hc-sr04-%E6%B5%8B%E8%B7%9D%E6%A8%A1%E5%9D%97/">prev post</a>
-  <a href="https://mengsheng.me/post/220v%E4%BA%A4%E6%B5%81%E8%BD%AC12v%E7%9B%B4%E6%B5%81-%E7%BA%BF%E6%80%A7%E7%A8%B3%E5%8E%8B%E7%94%B5%E6%BA%90/">next post</a>
-  </p>
-</div>
-
-  <footer class="content-width mt0 mt5-l mb4 f6 center ph3 gray tc tl-l">
-  <hr class="dn db-l ml0-l gray w3"><br>
-  Powered by <a href="https://gohugo.io/" target="_blank" class="link gray dim">Hugo</a>, based on the <a href="https://github.com/lingxz/er" target="_blank" class="link gray dim">Er</a> theme. <br>
-  
-</footer>
-  
-
-
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.min.js"></script>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.css">
-<style>.is-active-link::before { background-color: var(--secondary-color); }</style>
-
-
-
-
-<script type="text/javascript">
-var prevScrollpos = window.pageYOffset;
-window.onscroll = function() {
-  var currentScrollPos = window.pageYOffset;
-
-  
-  if (document.getElementById("tag-cloud") !== null) { 
-    if (prevScrollpos > currentScrollPos) { 
-      document.getElementById("tag-cloud").style.visibility = "visible";
-      document.getElementById("tag-cloud").style.opacity = "1";
-    } else {
-      document.getElementById("tag-cloud").style.visibility = "hidden";
-      document.getElementById("tag-cloud").style.opacity = "0";
-    }
-  }
-  
-
-  
-  if (document.body.scrollTop > 1000 || document.documentElement.scrollTop > 1000) {
-      document.getElementById("scroll-to-top").style.display = "inline";
-      document.getElementById("scroll-to-top").style.visibility = "visible";
-      document.getElementById("scroll-to-top").style.opacity = "1";
-  } else {
-      document.getElementById("scroll-to-top").style.visibility = "hidden";
-      document.getElementById("scroll-to-top").style.opacity = "0";
-  }
-  
-  prevScrollpos = currentScrollPos;
-}
-
-
-function topFunction() {
-  document.body.scrollTop = 0; 
-  document.documentElement.scrollTop = 0; 
-}
-
-
-
-
-
-
-if (document.getElementById("contents-list") !== null && document.getElementsByClassName("post-content").length !== 0) { 
-  tocbot.init({
+  <section>
     
-    tocSelector: '#contents-list',
+      
     
-    contentSelector: '.post-content',
+  </section>
+</article>
+
+      </div>
+
+      <div id="side" class="pr-1 bg-white">
+        <aside class="pr-3">
+          
+  
+    <div id="toc" class="Box Box--blue mb-3">
+      <b>centos 安装 python3</b>
+      <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li>
+<ul>
+<li>
+<ul>
+<li><a href="#从源代码安装-python3">从源代码安装 python3</a></li>
+</ul></li>
+</ul></li>
+<li><a href="#python3-v"><code>python3 -V</code></a>
+<ul>
+<li>
+<ul>
+<li><a href="#安装pip3">安装pip3</a></li>
+</ul></li>
+</ul></li>
+<li><a href="#pip3-v"><code>pip3 -V</code></a>
+<ul>
+<li>
+<ul>
+<li><a href="#安装-virtualenv">安装 virtualenv</a></li>
+<li><a href="#参考">参考</a></li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ul>
+</nav>
+    </div>
+  
+
+  
+    <div>
+      
+    </div>
+  
+
+        </aside>
+      </div>
+
+      <div id="footer" class="pt-2 pb-3 bg-white text-center">
+        
+
+  <span class="text-small text-gray">
     
-    headingSelector: 'h1, h2, h3',
-  });
-}
+
+    Powered by the
+    <a href="https://github.com/qqhann/hugo-primer" class="link-gray-dark">Hugo-Primer</a> theme for
+    <a href="https://gohugo.io" class="link-gray-dark">Hugo</a>.
+  </span>
 
 
-</script>
+      </div>
+    </div>
 
 
-
-
-</body>
+    
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({ tex2jax: { inlineMath: [['$','$'], ['\\(','\\)']] } });</script>
+  </body>
 </html>
