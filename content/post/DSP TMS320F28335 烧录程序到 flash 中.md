@@ -31,7 +31,7 @@ date:   2019-05-29
     | DSP2833x_CodeStartBranch.asm | C:\ti\c2000\C2000Ware_1_00_06_00\device_support\f2833x\common\source |
     | DSP2833x_MemCopy.c           | C:\ti\c2000\C2000Ware_1_00_06_00\device_support\f2833x\common\source |
 
-4. 在 main.c 文件中添加函数声明 
+4. 在 main.c 文件中添加全局变量声明 
 
     ```
     extern Uint16 RamfuncsLoadStart;
